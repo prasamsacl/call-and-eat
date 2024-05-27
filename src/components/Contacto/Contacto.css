@@ -1,0 +1,59 @@
+/* Contacto.css */
+.container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.header-top, .header-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+}
+
+.header-bottom nav ul {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+.header-bottom nav ul li {
+  margin: 0;
+}
+
+.search {
+  display: flex;
+  gap: 10px;
+}
+
+.contact-main {
+  display: flex;
+  padding: 20px;
+}
+
+.map-container {
+  flex: 1;
+}
+
+.map-image {
+  width: 100%;
+  height: auto;
+  border: 1px solid #ccc;
+}
+
+.contact-info {
+  flex: 1;
+  padding: 20px;
+}
+
+.contact-info h2 {
+  margin-top: 0;
+}
+
+footer {
+  background-color: #333;
+  color: white;
+  padding: 20px;
+  text-align: center;
+}

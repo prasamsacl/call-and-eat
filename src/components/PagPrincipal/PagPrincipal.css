@@ -1,0 +1,95 @@
+/* Estilos para la cabecera y el pie de página */
+header, footer {
+  background-color: #333; /* Color de fondo deseado */
+  padding: 20px;
+  text-align: center;
+  width: 100%; /* Establece el ancho al 100% */
+}
+
+.header-top {
+  display: flex;
+  align-items: center;
+}
+
+.header-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px; /* Desplazar hacia abajo */
+}
+
+.logo {
+  flex: 1;
+}
+
+.title {
+  flex: 1;
+  text-align: center;
+}
+
+.cart {
+  flex: 1;
+  text-align: right;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  padding: 0;
+  margin: 0;
+}
+
+nav ul li {
+  margin-right: 10px;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: white;
+  background-color: #555;
+  padding: 10px 15px;
+  border-radius: 5px;
+}
+
+
+
+.search {
+  display: flex;
+  align-items: center;
+  margin-top: 10px; /* Desplazar hacia abajo */
+}
+
+.search input {
+  margin-right: 10px;
+  padding: 5px;
+}
+
+.search button {
+  padding: 5px 10px;
+}
+
+/* Estilos para la imagen y el texto */
+.image-container {
+  display: flex;
+  align-items: center; /* Alinea verticalmente el contenido */
+}
+
+.pagina-principal {
+  max-width: 300px; /* Ajusta el tamaño máximo de la imagen */
+  height: auto;
+}
+
+.textos {
+  flex: 1; /* Ocupa todo el espacio disponible */
+  padding-left: 20px; /* Ajusta el espacio entre la imagen y el texto */
+}
+
+.call-eat {
+  position: absolute; /* Posiciona el texto Call&Eat */
+  top: 0; /* Ajusta la posición vertical */
+  left: 0; /* Ajusta la posición horizontal */
+  background-color: rgba(0, 0, 0, 0.5); /* Fondo semitransparente */
+  padding: 10px; /* Añade espacio alrededor del texto */
+  margin: 0; /* Elimina el margen */
+}
+

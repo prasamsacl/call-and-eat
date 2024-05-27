@@ -1,0 +1,60 @@
+/* Carro.css */
+.containerCarro {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.header-top, .header-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 1200px;
+  padding: 10px 20px;
+}
+
+.header-bottom nav ul {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+.header-bottom nav ul li {
+  margin: 0;
+}
+
+.search {
+  display: flex;
+  gap: 10px;
+}
+
+.image-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  padding: 20px;
+  width: 100%;
+  max-width: 1200px;
+}
+
+.image-item {
+  text-align: center;
+}
+
+.image {
+  width: 200px;
+  height: auto;
+}
+
+.info {
+  margin-top: 10px;
+}
+
+footer {
+  background-color: #333;
+  color: white;
+  padding: 20px;
+  text-align: center;
+}

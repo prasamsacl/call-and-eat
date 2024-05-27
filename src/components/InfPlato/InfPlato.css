@@ -1,0 +1,124 @@
+/* InfPlato.css */
+.container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  
+  header {
+    background-color: #f8f8f8;
+    padding: 10px 20px;
+  }
+  
+  .header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .header-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+  }
+  
+  .header-bottom nav ul {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .header-bottom nav ul li {
+    margin-right: 20px;
+  }
+  
+  .header-bottom nav ul li a {
+    text-decoration: none;
+    color: #333;
+  }
+  
+  .search {
+    display: flex;
+    align-items: center;
+  }
+  
+  .search input {
+    padding: 5px;
+    margin-right: 5px;
+  }
+  
+  main {
+    flex: 1;
+    padding: 20px;
+  }
+  
+  .dish-info {
+    display: flex;
+    margin-bottom: 20px;
+  }
+  
+  .dish-image {
+    flex: 1;
+    max-width: 300px;
+  }
+  
+  .dish-image img {
+    width: 100%;
+    height: auto;
+  }
+  
+  .dish-details {
+    flex: 2;
+    margin-left: 20px;
+  }
+  
+  .dish-details h2 {
+    margin: 0 0 10px;
+  }
+  
+  .allergens {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .price {
+    font-size: 1.2em;
+    color: #666;
+  }
+  
+  .dish-description {
+    margin-top: 20px;
+  }
+  
+  .dish-description textarea {
+    width: 100%;
+    height: 100px;
+    padding: 10px;
+    font-size: 1em;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  footer {
+    background-color: #333;
+    color: white;
+    padding: 20px;
+    text-align: center;
+  }
+
+  
+/* Estilo para los enlaces */
+a {
+    text-decoration: none; /* Quita el subrayado de todos los enlaces */
+  }
+  
+  /* Estilo específico para los enlaces dentro del logo, título y carrito */
+  .logo a,
+  .title a,
+  .cart a {
+    text-decoration: none; /* Quita el subrayado */
+    color: inherit; /* Hereda el color del texto del padre */
+  }
