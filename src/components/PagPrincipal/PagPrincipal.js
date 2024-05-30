@@ -1,21 +1,26 @@
+
 import React from "react";
 import "./PagPrincipal.css";
 import { Link } from "react-router-dom";
 import pagPrincipal from "../img/pagPrincipal.jpg";
-
+import logo from "../img/Logo.png"; 
+import CestaCompra from "../img/CestaCompra.png";
 const PagPrincipal = () => {
   return (
     <div className="container">
       <header>
         <div className="header-top">
+        <Link to="/">
+            <img src={logo} alt="Logo" className="logo" /> 
+          </Link>
           <Link to="/">
-            <div className="logo">Logo</div>
+            <img src={logo} alt="Logo" className="logo" /> 
           </Link>
           <Link to="/">
             <div className="title">Call&Eat</div>
           </Link>
           <Link to="/Carro">
-            <div className="cart">Carrito</div>
+            <img src={CestaCompra} alt="Cesta" className="CestaCarrito" />
           </Link>
         </div>
         <div className="header-bottom">
@@ -35,18 +40,11 @@ const PagPrincipal = () => {
         </div>
       </header>
       <main>
-        
-        <div className="image-container">
-          <img src={pagPrincipal} alt="Página Principal" className="pagina-principal" />
-          <p>
-          Call&Eat es una plataforma web diseñada para mejorar la experiencia de entrega de alimentos a domicilio para los clientes de Call&Eat, un establecimiento físico con servicio de entrega propia. La plataforma permite a los clientes realizar pedidos de comida directamente desde el sitio web, ofreciendo comodidad y variedad desde la comodidad de sus hogares.
-
-          La implementación inicial se centrará en optimizar la funcionalidad del sitio web para garantizar una experiencia de usuario fluida y segura. Se utilizarán tecnologías modernas de desarrollo web para garantizar un rendimiento óptimo y una navegación intuitiva para los usuarios.
-
-          Los clientes de Call&Eat serán el principal grupo de usuarios de la plataforma, beneficiándose de la conveniencia de realizar pedidos en línea y disfrutar de la entrega rápida y confiable proporcionada por los repartidores.
-          Para mantenerse al día con las demandas del mercado y las preferencias de los clientes, se prevén actualizaciones regulares y mejoras en la plataforma en el futuro. Esto garantizará que Call&Eat continúe ofreciendo un servicio de entrega de alimentos de alta calidad que satisfaga las necesidades de sus usuarios.
-          
-          </p>
+        <img src={pagPrincipal} alt="Página Principal" className="image" />
+        <div className="overlay">
+          <h1>Bienvenido a Call&Eat</h1>
+          <p>Descubre los mejores platos en nuestra carta y carta semanal</p>
+          <Link to="/Carta"><button>Ver Carta</button></Link>
         </div>
       </main>
       <footer>

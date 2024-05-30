@@ -32,8 +32,6 @@ nav ul li {
   display: inline;
 }
 
-
-
 .search {
   display: flex;
 }
@@ -64,15 +62,27 @@ nav ul li {
 
 .info {
   position: absolute;
-  bottom: 10px;
-  left: 10px;
+  bottom: 0;
+  left: 0;
+  width: 100%;
   background: rgba(0, 0, 0, 0.7);
   color: white;
-  padding: 5px;
+  padding: 10px;
+  box-sizing: border-box;
 }
 
 footer {
   background-color: #f8f8f8;
   padding: 20px;
   text-align: center;
+}
+
+.logo {
+  height: 90px; /* Ajusta el tamaño del logo */
+  width: auto;
+}
+
+.CestaCarrito {
+  height: 60px; /* Ajusta el tamaño del logo */
+  width: auto;
 }

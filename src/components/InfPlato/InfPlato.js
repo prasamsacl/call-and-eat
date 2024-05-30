@@ -1,46 +1,53 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { useParams, Link } from "react-router-dom";
+import axios from "axios";
 import "./InfPlato.css";
+import logo from "../img/Logo.png"; 
+import CestaCompra from "../img/CestaCompra.png";
 
 const InfPlato = () => {
-  // Estado para almacenar los platos en el carrito
-  const [carrito, setCarrito] = useState([]);
+  const { id } = useParams();
+  const [plato, setPlato] = useState(null);
 
-  // Función para agregar un plato al carrito
-  const agregarAlCarrito = (plato) => {
-    setCarrito([...carrito, plato]);
+  useEffect(() => {
+    const fetchPlato = async () => {
+      try {
+        const response = await axios.get(`http://localhost:8000/api/platos/${id}`);
+        setPlato(response.data);
+      } catch (error) {
+        console.error("Error fetching plato:", error);
+      }
+    };
+
+    fetchPlato();
+  }, [id]);
+
+  const agregarAlCarrito = () => {
+    // Aquí puedes implementar la lógica para agregar el plato al carrito
+    console.log("Plato agregado al carrito:", plato);
   };
 
-  // Información del plato (sustituye este objeto con la información real del plato)
-  const plato = {
-    nombre: "Nombre del Plato",
-    precio: "$00.00",
-    imagen: "/path/to/image.jpg",
-    allergenos: ["/path/to/allergen1.png", "/path/to/allergen2.png"],
-    descripcion: "Información del plato...",
-  };
+  if (!plato) {
+    return <div>Cargando plato...</div>;
+  }
 
   return (
     <div className="container">
       <header>
         <div className="header-top">
-          {/* Utiliza Link para el logo */}
           <Link to="/">
-            <div className="logo">Logo</div>
+            <img src={logo} alt="Logo" className="logo" /> 
           </Link>
-          {/* Utiliza Link para el título */}
           <Link to="/">
             <div className="title">Call&Eat</div>
           </Link>
-          {/* Utiliza Link para el carrito */}
           <Link to="/Carro">
-            <div className="cart">Carrito</div>
+            <img src={CestaCompra} alt="Cesta" className="CestaCarrito" />
           </Link>
         </div>
         <div className="header-bottom">
           <nav>
             <ul>
-              {/* Utiliza Link en lugar de a */}
               <li><Link to="/">Inicio</Link></li>
               <li><Link to="/Carta">Carta</Link></li>
               <li><Link to="/CartaSemanal">Carta Semanal</Link></li>
@@ -55,29 +62,23 @@ const InfPlato = () => {
         </div>
       </header>
       <main>
-        {/* Contenido del plato */}
         <div className="dish-info">
-          {/* Imagen del plato */}
           <div className="dish-image">
-            <img src={plato.imagen} alt="Imagen del plato" />
+            <img src={plato.imagen} alt={plato.nombre} />
           </div>
-          {/* Detalles del plato */}
           <div className="dish-details">
-            {/* Nombre del plato */}
             <h2>{plato.nombre}</h2>
-            {/* Alérgenos */}
             <div className="allergens">
+              {/* Mapeamos los alérgenos del plato */}
               {plato.allergenos.map((allergen, index) => (
                 <img key={index} src={allergen} alt={`Alérgeno ${index + 1}`} />
               ))}
             </div>
-            {/* Precio del plato */}
             <p className="price">Precio: {plato.precio}</p>
-            {/* Botón "Añadir al Carrito" con evento onClick */}
-            <button onClick={() => agregarAlCarrito(plato)}>Añadir al Carrito</button>
+            {/* Botón para añadir el plato al carrito */}
+            <button onClick={agregarAlCarrito}>Añadir al Carrito</button>
           </div>
         </div>
-        {/* Descripción del plato */}
         <div className="dish-description">
           <textarea value={plato.descripcion} readOnly placeholder="Información del plato..."></textarea>
         </div>

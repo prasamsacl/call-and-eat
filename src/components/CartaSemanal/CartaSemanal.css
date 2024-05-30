@@ -1,15 +1,25 @@
-/* CartaSemanal.css */
+body {
+  background-color: var(--fondo-principal);
+  color: var(--gris-oscuro);
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
 .container {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
 }
 
+/* Cabecera */
 .header-top, .header-bottom {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 10px 20px;
+  background-color: var(--verde-hierba);
+  color: var(--fondo-principal);
 }
 
 .header-bottom nav ul {
@@ -22,11 +32,38 @@
   margin: 0;
 }
 
+.header-bottom nav ul li a {
+  color: var(--fondo-principal);
+  text-decoration: none;
+}
+
 .search {
   display: flex;
   gap: 10px;
 }
 
+.search input {
+  padding: 5px;
+  border: 1px solid var(--gris-claro);
+  border-radius: 3px;
+}
+
+.search button {
+  background-color: var(--amarillo-maiz);
+  color: var(--fondo-principal); /* Color de texto blanco */
+  border: none;
+  padding: 5px 10px;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.search button:hover {
+  background-color: var(--rojo-tomate);
+  color: var(--fondo-principal);
+}
+
+
+/* Menú Semanal */
 .weekly-menu {
   flex: 1;
   padding: 20px;
@@ -43,8 +80,8 @@
 }
 
 .card {
-  background: #fff;
-  border: 1px solid #ddd;
+  background: var(--fondo-principal);
+  border: 1px solid var(--gris-claro);
   border-radius: 4px;
   overflow: hidden;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -72,13 +109,36 @@
   margin-top: 20px;
   font-size: 1.5em;
 }
+
 .plato-link:hover {
-  background-color: #f0f0f0;
+  background-color: var(--gris-claro);
 }
 
 footer {
-  background-color: #333;
-  color: white;
+  background-color: var(--gris-oscuro);
+  color: var(--fondo-principal);
   padding: 20px;
   text-align: center;
+}
+
+.total-price button {
+  background-color: var(--rojo-tomate); /* Color destacado */
+  color: var(--fondo-principal);
+  border: none;
+  padding: 15px 30px; /* Aumentar el padding para hacer el botón más grande */
+  font-size: 1.2em; /* Ajustar el tamaño de la fuente */
+  border-radius: 5px; /* Agregar bordes redondeados */
+  cursor: pointer;
+}
+
+.total-price button:hover {
+  background-color: var(--e65c00); /* Cambiar color al pasar el cursor sobre el botón */
+}
+.logo {
+  height: 90px; /* Ajusta el tamaño del logo */
+  width: auto;
+}
+.CestaCarrito{
+  height: 60px; /* Ajusta el tamaño del logo */
+  width: auto;
 }

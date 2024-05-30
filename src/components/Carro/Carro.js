@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "./Carro.css";
+import logo from "../img/Logo.png"; 
+import CestaCompra from "../img/CestaCompra.png";
 
 const Carro = () => {
   // Estado para almacenar los platos en el carrito
@@ -26,15 +28,15 @@ const Carro = () => {
   return (
     <div className="containerCarro">
       <header>
-        <div className="header-top">
-          <Link to="/">
-            <div className="logo">Logo</div>
+      <div className="header-top">
+        <Link to="/">
+            <img src={logo} alt="Logo" className="logo" /> 
           </Link>
           <Link to="/">
             <div className="title">Call&Eat</div>
           </Link>
           <Link to="/Carro">
-            <div className="cart">Carrito</div>
+            <img src={CestaCompra} alt="Cesta" className="CestaCarrito" />
           </Link>
         </div>
         <div className="header-bottom">
@@ -69,6 +71,10 @@ const Carro = () => {
         {/* Precio total del carrito */}
         <div className="precio-total">
           <h3>Total: {calcularPrecioTotal()}</h3>
+        </div>
+        {/* Botón "Siguiente" */}
+        <div className="siguiente">
+          <Link to="/PagoFinal"><button>Siguiente</button></Link>
         </div>
       </main>
       <footer className="footer">

@@ -1,10 +1,20 @@
-/* Carro.css */
+/* Estilos Generales */
+body {
+  background-color: var(--fondo-principal);
+  color: var(--gris-oscuro);
+  font-family: Arial, sans-serif;
+  
+  margin: 0;
+  padding: 0;
+}
+
 .containerCarro {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
 }
 
+/* Cabecera */
 .header-top, .header-bottom {
   display: flex;
   justify-content: space-between;
@@ -12,6 +22,8 @@
   width: 100%;
   max-width: 1200px;
   padding: 10px 20px;
+  background-color: var(--verde-hierba);
+  color: var(--fondo-principal);
 }
 
 .header-bottom nav ul {
@@ -24,11 +36,37 @@
   margin: 0;
 }
 
+.header-bottom nav ul li a {
+  color: var(--fondo-principal);
+  text-decoration: none;
+}
+
 .search {
   display: flex;
   gap: 10px;
 }
 
+.search input {
+  padding: 5px;
+  border: 1px solid var(--gris-claro);
+  border-radius: 3px;
+}
+
+.search button {
+  background-color: var(--amarillo-maiz);
+  color: var(--fondo-principal); /* Color de texto blanco */
+  border: none;
+  padding: 5px 10px;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.search button:hover {
+  background-color: var(--rojo-tomate);
+  color: var(--fondo-principal);
+}
+
+/* Grid de Imágenes */
 .image-grid {
   display: flex;
   flex-wrap: wrap;
@@ -52,9 +90,55 @@
   margin-top: 10px;
 }
 
+/* Formulario */
+.formulario {
+  margin-top: 20px;
+  padding: 20px;
+  background-color: var(--gris-claro);
+  border-radius: 8px;
+}
+
+.formulario label {
+  display: block;
+  margin-bottom: 8px;
+}
+
+.formulario input[type="text"],
+.formulario input[type="number"],
+.formulario select,
+.formulario textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid var(--gris-claro);
+  border-radius: 4px;
+}
+
+.formulario button {
+  background-color: var(--verde-hierba);
+  color: var(--fondo-principal);
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.formulario button:hover {
+  background-color: #45a049;
+}
+
+/* Pie de página */
 footer {
-  background-color: #333;
-  color: white;
+  background-color: var(--gris-oscuro);
+  color: var(--fondo-principal);
   padding: 20px;
   text-align: center;
+}
+.logo {
+  height: 90px; /* Ajusta el tamaño del logo */
+  width: auto;
+}
+.CestaCarrito{
+  height: 60px; /* Ajusta el tamaño del logo */
+  width: auto;
 }

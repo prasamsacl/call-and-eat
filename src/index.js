@@ -20,14 +20,15 @@ ReactDOM.render(
         <Route path="/Carta" element={<Carta />} />
         {/* Eliminamos esta línea, ya que la siguiente ruta ya cubre los platos por categoría */}
          <Route path="/Platos" element={<Platos />} /> 
-        {/* Reemplazamos la ruta anterior por una sola ruta que maneje las categorías */}
         <Route path="/Platos/:categoria" element={<Platos />} />
+
         <Route path="/CartaSemanal" element={<CartaSemanal />} /> 
         <Route path="/Galeria" element={<Galeria />} />
         <Route path="/Contacto" element={<Contacto />} />
         <Route path="/Carro" element={<Carro />} />
        {/*  <Route path="/InfPlato" element={<InfPlato />} /> */}
        <Route path="/Platos/:categoria/:id" element={<InfPlato />} />
+       <Route path="/InfPlato/:id" element={<InfPlato />} />
         <Route path="/PagoFinal" element={<PagoFinal />} />
       </Routes>
     </Router>

@@ -1,27 +1,33 @@
 import React from "react";
 import "./CartaSemanal.css";
 import { Link } from "react-router-dom";
+import logo from "../img/Logo.png"; 
+import CestaCompra from "../img/CestaCompra.png";
+import entrante5 from "../img/Entrantes/entrante5.jpg";
+import portadaPescado from "../img/Pescado/portadaPescado.jpg";
+import helados from "../img/Postres/helados.jpg";
+import portadaBebidas from "../img/Bebidas/portadaBebidas.jpg";
 
 const CartaSemanal = () => {
   const platos = [
-    { tipo: "Primer Plato", nombre1: "Berenjenas a la Parmesana", nombre2: "Ensalada César", nombre3: "Sopa de Verduras", imagen: "../img/PatatasyArroces/arroces5.jpg" },
-    { tipo: "Segundo Plato", nombre1: "Pollo Asado", nombre2: "Pescado al Horno", nombre3: "Lasaña de Carne", imagen: "pagPrincipal2.jpg" },
-    { tipo: "Postre", nombre1: "Tarta de Queso", nombre2: "Fruta Fresca", nombre3: "Helado", imagen: "pagPrincipal3.jpg" },
-    { tipo: "Bebidas", nombre1: "Agua", nombre2: "Vino Tinto", nombre3: "Refresco", imagen: "pagPrincipal4.jpg" }
+    { tipo: "Primer Plato", nombre1: "Berenjenas a la Parmesana", nombre2: "Ensalada César", nombre3: "Sopa de Verduras", imagen: entrante5 },
+    { tipo: "Segundo Plato", nombre1: "Pollo Asado", nombre2: "Pescado al Horno", nombre3: "Lasaña de Carne", imagen: portadaPescado },
+    { tipo: "Postre", nombre1: "Tarta de Queso", nombre2: "Fruta Fresca", nombre3: "Helado", imagen: helados },
+    { tipo: "Bebidas", nombre1: "Agua", nombre2: "Vino Tinto", nombre3: "Refresco", imagen: portadaBebidas }
   ];
 
   return (
     <div className="container">
       <header>
-        <div className="header-top">
-          <Link to="/">
-            <div className="logo">Logo</div>
+      <div className="header-top">
+        <Link to="/">
+            <img src={logo} alt="Logo" className="logo" /> 
           </Link>
           <Link to="/">
             <div className="title">Call&Eat</div>
           </Link>
           <Link to="/Carro">
-            <div className="cart">Carrito</div>
+            <img src={CestaCompra} alt="Cesta" className="CestaCarrito" />
           </Link>
         </div>
         <div className="header-bottom">
@@ -44,7 +50,7 @@ const CartaSemanal = () => {
         <div className="image-grid">
           {platos.map((plato, index) => (
             <div key={index} className="card">
-              <img src={require(`../img/${plato.imagen}`).default} alt={plato.tipo} className="image" />
+              <img src={plato.imagen} alt={plato.tipo} className="image" />
               <div className="image-text">{plato.tipo}</div>
               <div className="plato-descripcion">
                 <p><Link to={`/Plato/${plato.nombre1}`} className="plato-link">{plato.nombre1}</Link></p>
@@ -56,6 +62,7 @@ const CartaSemanal = () => {
         </div>
         <div className="total-price">
           <p>Precio Total del Menú: <strong>12€</strong></p>
+          <Link to="/PagoFinal"><button>Hacer Pedido</button></Link>
         </div>
       </main>
       <footer>

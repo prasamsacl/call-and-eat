@@ -1,6 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./Carta.css";
+import logo from "../img/Logo.png"; 
+import CestaCompra from "../img/CestaCompra.png";
 
 const Carta = () => {
   const imagenes = [
@@ -28,15 +30,15 @@ const Carta = () => {
   return (
     <div className="containerCarta">
       <header>
-        <div className="header-top">
-          <Link to="/">
-            <div className="logo">Logo</div>
+      <div className="header-top">
+        <Link to="/">
+            <img src={logo} alt="Logo" className="logo" /> 
           </Link>
           <Link to="/">
             <div className="title">Call&Eat</div>
           </Link>
           <Link to="/Carro">
-            <div className="cart">Carrito</div>
+            <img src={CestaCompra} alt="Cesta" className="CestaCarrito" />
           </Link>
         </div>
         <div className="header-bottom">
