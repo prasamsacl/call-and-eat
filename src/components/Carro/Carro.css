@@ -1,4 +1,3 @@
-/* Estilos Generales */
 body {
   background-color: var(--fondo-principal);
   color: var(--gris-oscuro);
@@ -14,7 +13,6 @@ body {
   min-height: 100vh;
 }
 
-/* Cabecera */
 .header-top, .header-bottom {
   display: flex;
   justify-content: space-between;
@@ -54,7 +52,7 @@ body {
 
 .search button {
   background-color: var(--amarillo-maiz);
-  color: var(--fondo-principal); /* Color de texto blanco */
+  color: var(--fondo-principal); 
   border: none;
   padding: 5px 10px;
   border-radius: 3px;
@@ -127,7 +125,7 @@ body {
   background-color: #45a049;
 }
 
-/* Pie de página */
+
 footer {
   background-color: var(--gris-oscuro);
   color: var(--fondo-principal);
@@ -135,10 +133,10 @@ footer {
   text-align: center;
 }
 .logo {
-  height: 90px; /* Ajusta el tamaño del logo */
+  height: 90px;
   width: auto;
 }
 .CestaCarrito{
-  height: 60px; /* Ajusta el tamaño del logo */
+  height: 60px;
   width: auto;
 }

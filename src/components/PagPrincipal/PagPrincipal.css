@@ -1,5 +1,4 @@
 
-/* Estilos para la cabecera y el pie de página */
 header, footer {
 
   padding: 20px;
@@ -11,7 +10,7 @@ header, footer {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: rgba(0, 0, 0, 0.5); /* Fondo semitransparente */
+  background-color: rgba(0, 0, 0, 0.5); 
 }
 
 .header-bottom {
@@ -22,11 +21,11 @@ header, footer {
 }
 
 .logo {
-  height: 90px; /* Ajusta el tamaño del logo */
+  height: 90px; 
   width: auto;
 }
 .CestaCarrito{
-  height: 60px; /* Ajusta el tamaño del logo */
+  height: 60px; 
   width: auto;
 }
 

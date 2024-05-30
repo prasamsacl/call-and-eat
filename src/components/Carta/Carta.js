@@ -1,10 +1,11 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import "./Carta.css";
+import { Link } from "react-router-dom"; 
+import "./Carta.css";  
 import logo from "../img/Logo.png"; 
-import CestaCompra from "../img/CestaCompra.png";
+import CestaCompra from "../img/CestaCompra.png"; 
 
 const Carta = () => {
+  // Array de imágenes de los platos, usando require para importar las imágenes
   const imagenes = [
     require("../img/Entrantes/imagenEntrantes.jpg"),
     require("../img/CaldosyPotajes/caldos3.jpg"),
@@ -16,6 +17,7 @@ const Carta = () => {
     require("../img/Bebidas/portadaBebidas.jpg"),
   ];
 
+  // Array de objetos que contiene los nombres de los platos y sus rutas correspondientes
   const platos = [
     { nombre: "Entrantes", ruta: "Entrantes" },
     { nombre: "Caldos y Potajes", ruta: "CaldosyPotajes" },
@@ -30,18 +32,22 @@ const Carta = () => {
   return (
     <div className="containerCarta">
       <header>
-      <div className="header-top">
-        <Link to="/">
-            <img src={logo} alt="Logo" className="logo" /> 
+        <div className="header-top">
+          {/* Enlace al inicio con el logo */}
+          <Link to="/">
+            <img src={logo} alt="Logo" className="logo" />
           </Link>
+          {/* Enlace al inicio con el título */}
           <Link to="/">
             <div className="title">Call&Eat</div>
           </Link>
+          {/* Enlace al carrito de compras */}
           <Link to="/Carro">
             <img src={CestaCompra} alt="Cesta" className="CestaCarrito" />
           </Link>
         </div>
         <div className="header-bottom">
+          {/* Navegación principal */}
           <nav>
             <ul>
               <li><Link to="/">Inicio</Link></li>
@@ -51,6 +57,7 @@ const Carta = () => {
               <li><Link to="/Contacto">Contacto</Link></li>
             </ul>
           </nav>
+          {/* Barra de búsqueda */}
           <div className="search">
             <input type="text" placeholder="Buscar..." />
             <button>Buscar</button>
@@ -58,6 +65,7 @@ const Carta = () => {
         </div>
       </header>
       <main>
+        {/* Grid de imágenes de los platos */}
         <div className="image-grid">
           {platos.map((plato, index) => (
             <Link key={index} to={`/Platos/${plato.ruta}`}>
@@ -78,4 +86,4 @@ const Carta = () => {
   );
 };
 
-export default Carta;
+export default Carta; // Exportamos el componente para que pueda ser utilizado en otras partes de la aplicación

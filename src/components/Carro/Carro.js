@@ -27,9 +27,10 @@ const Carro = () => {
 
   return (
     <div className="containerCarro">
+      {/* Encabezado */}
       <header>
-      <div className="header-top">
-        <Link to="/">
+        <div className="header-top">
+          <Link to="/">
             <img src={logo} alt="Logo" className="logo" /> 
           </Link>
           <Link to="/">
@@ -55,6 +56,7 @@ const Carro = () => {
           </div>
         </div>
       </header>
+      {/* Contenido principal */}
       <main>
         {/* Lista de platos en el carrito */}
         <div className="carrito">
@@ -77,6 +79,7 @@ const Carro = () => {
           <Link to="/PagoFinal"><button>Siguiente</button></Link>
         </div>
       </main>
+      {/* Pie de página */}
       <footer className="footer">
         <p>&copy; 2024 Call&Eat. Todos los derechos reservados.</p>
       </footer>
