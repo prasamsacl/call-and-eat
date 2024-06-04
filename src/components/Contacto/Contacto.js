@@ -25,7 +25,7 @@ const Contacto = () => {
   };
 
   return (
-    <div className="container">
+    <div className="containerContacto">
       <header>
         <div className="header-top">
           {/* Enlace al inicio con el logo */}

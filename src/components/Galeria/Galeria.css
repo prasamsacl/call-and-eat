@@ -8,6 +8,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  background-color: #ffffff; /* Blanco */
   padding: 10px 20px;
 }
 
@@ -52,8 +53,8 @@
 }
 
 footer {
-  background-color: #333;
-  color: white;
+  background-color: #ffffff; /* Blanco */
+  color: black;
   padding: 20px;
   text-align: center;
 }

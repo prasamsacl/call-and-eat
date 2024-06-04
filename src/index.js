@@ -18,7 +18,7 @@ ReactDOM.render(
       <Routes>
         <Route path="/" element={<PagPrincipal />} />
         <Route path="/Carta" element={<Carta />} />
-        {/* Eliminamos esta línea, ya que la siguiente ruta ya cubre los platos por categoría */}
+
          <Route path="/Platos" element={<Platos />} /> 
         <Route path="/Platos/:categoria" element={<Platos />} />
 

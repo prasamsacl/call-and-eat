@@ -35,3 +35,19 @@ export const getImagenesCarrusel = async () => {
     const respuesta = await fetch(API_BASE_URL + "imagen-carrusel/");
     return respuesta.json();
 };
+
+// Función para obtener todos los platos
+export const getAllPlatos = async () => {
+    const respuesta = await fetch(API_BASE_URL + "platos/");
+    return respuesta.json();
+};
+// Función para obtener los detalles de un plato por su ID
+export const getPlatoPorId = async (platoId) => {
+    const respuesta = await fetch(API_BASE_URL + `platos/${platoId}/`);
+    return respuesta.json();
+};
+
+// Ejemplo de cómo usar la función para obtener un plato por su ID
+const platoId = 1; // ID del plato que deseas obtener
+const plato = await getPlatoPorId(platoId);
+console.log(plato);

@@ -2,7 +2,6 @@ body {
   background-color: var(--fondo-principal);
   color: var(--gris-oscuro);
   font-family: Arial, sans-serif;
-  
   margin: 0;
   padding: 0;
 }
@@ -13,14 +12,15 @@ body {
   min-height: 100vh;
 }
 
-.header-top, .header-bottom {
+.header-top,
+.header-bottom {
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 100%;
   max-width: 1200px;
   padding: 10px 20px;
-  background-color: var(--verde-hierba);
+  background-color: #ffffff; /* Cambia el color de fondo a blanco */
   color: var(--fondo-principal);
 }
 
@@ -52,7 +52,7 @@ body {
 
 .search button {
   background-color: var(--amarillo-maiz);
-  color: var(--fondo-principal); 
+  color: var(--fondo-principal);
   border: none;
   padding: 5px 10px;
   border-radius: 3px;
@@ -125,18 +125,19 @@ body {
   background-color: #45a049;
 }
 
-
 footer {
   background-color: var(--gris-oscuro);
   color: var(--fondo-principal);
   padding: 20px;
   text-align: center;
 }
+
 .logo {
   height: 90px;
   width: auto;
 }
-.CestaCarrito{
+
+.CestaCarrito {
   height: 60px;
   width: auto;
 }

@@ -10,6 +10,7 @@ const PagoFinal = () => {
   const [datosPago, setDatosPago] = useState({
     nombre: "",
     apellidos: "",
+    telefono:"",
     tarjeta: "",
     cv: "",
     fecha: "",
@@ -87,6 +88,9 @@ const PagoFinal = () => {
           <label htmlFor="apellidos">Apellidos:</label>
           <input type="text" id="apellidos" name="apellidos" value={datosPago.apellidos} onChange={handleChange} required />
           
+          <label htmlFor="telefono">Telefono:</label>
+          <input type="text" id="telefono" name="telefono" value={datosPago.tarjeta} onChange={handleChange} required />
+
           <label htmlFor="tarjeta">Tarjeta de Crédito:</label>
           <input type="text" id="tarjeta" name="tarjeta" value={datosPago.tarjeta} onChange={handleChange} required />
           

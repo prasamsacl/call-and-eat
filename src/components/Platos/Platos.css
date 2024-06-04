@@ -1,12 +1,18 @@
-.containerCarta {
+
+.containerPlatos {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  .containerPlatos {
+    background-color: #ffffff; /* Cambia el color de fondo a blanco */
+  }
+  
 }
 
 .header-top, .header-bottom {
   background-color: #f8f8f8;
   padding: 10px 0;
+
 }
 
 .header-top {
@@ -20,6 +26,12 @@
   justify-content: space-between;
   align-items: center;
   padding: 10px 20px;
+}
+
+.header-image img {
+  width: 100%;
+  height: auto;
+  margin-top: 10px;
 }
 
 nav ul {
@@ -71,18 +83,25 @@ nav ul li {
   box-sizing: border-box;
 }
 
+.footer-image img {
+  width: 100%;
+  height: auto;
+  margin-bottom: 10px;
+}
+
 footer {
   background-color: #f8f8f8;
   padding: 20px;
   text-align: center;
+  
 }
 
 .logo {
-  height: 90px; 
+  height: 90px;
   width: auto;
 }
 
 .CestaCarrito {
-  height: 60px; 
+  height: 60px;
   width: auto;
 }
