@@ -30,13 +30,18 @@ body {
 
 .header-bottom nav ul li {
   margin: 0;
-  
 }
 
 .header-bottom nav ul li a {
   text-decoration: none;
   background-color: #000000; /* Negro */
-  color: #ffffff; /* Texto blanco para contraste *
+  color: #ffffff; /* Texto blanco para contraste */
+  padding: 5px 10px;
+  border-radius: 3px;
+}
+
+.header-bottom nav ul li a:hover {
+  background-color: #FF5722; /* Rojo tomate */
 }
 
 .search {
@@ -51,8 +56,8 @@ body {
 }
 
 .search button {
-  background-color: #f2f2f2; /* Gris Claro */
-    color: #333333; /* Color del texto */
+  background-color: #f2f2f2; /* Gris claro */
+  color: #333333; /* Color del texto */
   border: none;
   padding: 5px 10px;
   border-radius: 3px;
@@ -122,43 +127,33 @@ body {
   background-color: #cccccc; /* Gris claro */
 }
 
+.selected-platos {
+  margin-top: 20px;
+  text-align: center;
+}
+
 .total-price {
   margin-top: 20px;
   font-size: 1.5em;
 }
 
 .total-price button {
-  background-color: #FF5722; /* Color destacado */
-  color: #ffffff; /* Fondo principal */
+  background-color: #4CAF50; /* Verde hierba */
+  color: #ffffff; /* Texto blanco */
   border: none;
-  padding: 15px 30px;
-  font-size: 1.2em;
+  padding: 10px 20px;
   border-radius: 5px;
   cursor: pointer;
+  font-size: 1em;
 }
 
 .total-price button:hover {
-  background-color: #e65c00; /* Cambiar color al pasar el cursor sobre el botón */
+  background-color: #FF5722; /* Rojo tomate */
 }
 
 footer {
-  background-color: #333333; /* Gris oscuro */
+  background-color: #4CAF50; /* Verde hierba */
   color: #ffffff; /* Fondo principal */
-  padding: 20px;
   text-align: center;
-}
-
-.logo {
-  height: 90px;
-  width: auto;
-}
-
-.CestaCarrito {
-  height: 60px;
-  width: auto;
-}
-
-.selected-platos {
-  margin-top: 20px;
-  text-align: center;
+  padding: 10px 0;
 }

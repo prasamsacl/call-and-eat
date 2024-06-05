@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import reportWebVitals from './reportWebVitals';
@@ -12,26 +12,35 @@ import CartaSemanal from './components/CartaSemanal/CartaSemanal';
 import Contacto from './components/Contacto/Contacto';
 import Galeria from './components/Galeria/Galeria';
 
-ReactDOM.render(
-  <React.StrictMode>
+const App = () => {
+  const [carrito, setCarrito] = useState([]);
+
+  const agregarAlCarrito = (plato) => {
+    setCarrito([...carrito, plato]);
+  };
+
+  return (
     <Router>
       <Routes>
         <Route path="/" element={<PagPrincipal />} />
-        <Route path="/Carta" element={<Carta />} />
-
-         <Route path="/Platos" element={<Platos />} /> 
-        <Route path="/Platos/:categoria" element={<Platos />} />
-
-        <Route path="/CartaSemanal" element={<CartaSemanal />} /> 
+        <Route path="/Carta" element={<Carta agregarAlCarrito={agregarAlCarrito} />} />
+        <Route path="/Platos" element={<Platos agregarAlCarrito={agregarAlCarrito} />} />
+        <Route path="/Platos/:categoria" element={<Platos agregarAlCarrito={agregarAlCarrito} />} />
+        <Route path="/CartaSemanal" element={<CartaSemanal agregarAlCarrito={agregarAlCarrito} />} />
         <Route path="/Galeria" element={<Galeria />} />
         <Route path="/Contacto" element={<Contacto />} />
-        <Route path="/Carro" element={<Carro />} />
-       {/*  <Route path="/InfPlato" element={<InfPlato />} /> */}
-       <Route path="/Platos/:categoria/:id" element={<InfPlato />} />
-       <Route path="/InfPlato/:id" element={<InfPlato />} />
+        <Route path="/Carro" element={<Carro carrito={carrito} />} />
+        <Route path="/Platos/:categoria/:id" element={<InfPlato agregarAlCarrito={agregarAlCarrito} />} />
+        <Route path="/InfPlato/:id" element={<InfPlato agregarAlCarrito={agregarAlCarrito} />} />
         <Route path="/PagoFinal" element={<PagoFinal />} />
       </Routes>
     </Router>
+  );
+};
+
+ReactDOM.render(
+  <React.StrictMode>
+    <App />
   </React.StrictMode>,
   document.getElementById('root')
 );

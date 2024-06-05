@@ -1,28 +1,49 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import "./Carro.css";
-import logo from "../img/Logo.png"; 
+import logo from "../img/Logo.png";
 import CestaCompra from "../img/CestaCompra.png";
 
-const Carro = () => {
-  // Estado para almacenar los platos en el carrito
-  const [carrito, setCarrito] = useState([]);
-
-  // Función para agregar un plato al carrito
-  const agregarAlCarrito = (plato) => {
-    setCarrito([...carrito, plato]);
+const Carro = ({ carrito }) => {
+  // Función para calcular el precio total del carrito
+  const calcularPrecioTotal = (carrito) => {
+    return carrito.reduce((total, plato) => total + plato.precio * plato.cantidad, 0);
   };
+
+  // Estado local para el carrito y el precio total
+  const [carritoLocal, setCarritoLocal] = useState(carrito);
+  const [precioTotal, setPrecioTotal] = useState(calcularPrecioTotal(carritoLocal));
 
   // Función para eliminar un plato del carrito
   const eliminarDelCarrito = (index) => {
-    const nuevoCarrito = [...carrito];
+    const nuevoCarrito = [...carritoLocal];
     nuevoCarrito.splice(index, 1);
-    setCarrito(nuevoCarrito);
+    setCarritoLocal(nuevoCarrito);
+    setPrecioTotal(calcularPrecioTotal(nuevoCarrito));
   };
 
-  // Función para calcular el precio total del carrito
-  const calcularPrecioTotal = () => {
-    return carrito.reduce((total, plato) => total + plato.precio, 0);
+  // Función para aumentar la cantidad de un plato
+  const aumentarCantidad = (index) => {
+    const nuevoCarrito = [...carritoLocal];
+    nuevoCarrito[index].cantidad += 1;
+    setCarritoLocal(nuevoCarrito);
+    setPrecioTotal(calcularPrecioTotal(nuevoCarrito));
+  };
+
+  // Función para disminuir la cantidad de un plato
+  const disminuirCantidad = (index) => {
+    const nuevoCarrito = [...carritoLocal];
+    if (nuevoCarrito[index].cantidad > 1) {
+      nuevoCarrito[index].cantidad -= 1;
+    } else {
+      eliminarDelCarrito(index);
+    }
+    setCarritoLocal(nuevoCarrito);
+    setPrecioTotal(calcularPrecioTotal(nuevoCarrito));
+  };
+
+  // Función para mostrar el precio total del carrito
+  const mostrarPrecioTotal = () => {
+    return isNaN(precioTotal) ? "0.00" : precioTotal.toFixed(2);
   };
 
   return (
@@ -31,7 +52,7 @@ const Carro = () => {
       <header>
         <div className="header-top">
           <Link to="/">
-            <img src={logo} alt="Logo" className="logo" /> 
+            <img src={logo} alt="Logo" className="logo" />
           </Link>
           <Link to="/">
             <div className="title">Call&Eat</div>
@@ -62,9 +83,18 @@ const Carro = () => {
         <div className="carrito">
           <h2>Carrito</h2>
           <ul>
-            {carrito.map((plato, index) => (
-              <li key={index}>
-                {plato.nombre} - {plato.cantidad}
+            {carritoLocal.map((plato, index) => (
+              <li key={index} className="carrito-item">
+                <div className="plato-info">
+                  <span>{plato.nombre}</span>
+                  <div className="cantidad-controles">
+                    <button onClick={() => disminuirCantidad(index)}>-</button>
+                    <span>{plato.cantidad}</span>
+                    <button onClick={() => aumentarCantidad(index)}>+</button>
+                  </div>
+                  <span>Precio por unidad: {plato.precio} €</span>
+                  <span>Precio total: {plato.precio * plato.cantidad} €</span>
+                </div>
                 <button onClick={() => eliminarDelCarrito(index)}>Eliminar</button>
               </li>
             ))}
@@ -72,7 +102,7 @@ const Carro = () => {
         </div>
         {/* Precio total del carrito */}
         <div className="precio-total">
-          <h3>Total: {calcularPrecioTotal()}</h3>
+          <h3>Total: {mostrarPrecioTotal()} €</h3>
         </div>
         {/* Botón "Siguiente" */}
         <div className="siguiente">

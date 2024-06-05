@@ -1,24 +1,24 @@
-
 .containerPlatos {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  .containerPlatos {
-    background-color: #ffffff; /* Cambia el color de fondo a blanco */
-  }
-  
+  background-color: #ffffff;
 }
+
+/* Estilos para el header */
 
 .header-top, .header-bottom {
   background-color: #f8f8f8;
   padding: 10px 0;
-
 }
 
 .header-top {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+.info{
+  margin-top: 10px;
 }
 
 .header-bottom {
@@ -28,11 +28,7 @@
   padding: 10px 20px;
 }
 
-.header-image img {
-  width: 100%;
-  height: auto;
-  margin-top: 10px;
-}
+/* Resto del header */
 
 nav ul {
   list-style: none;
@@ -56,52 +52,40 @@ nav ul li {
   padding: 5px;
 }
 
+/* Resto del CSS */
+
 .image-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 20px;
   padding: 20px;
+  margin-top: 40px; /* Margen superior para separarlo del contenido anterior */
 }
 
 .image-item {
-  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centra los elementos horizontalmente */
+  text-align: center; /* Centra el texto */
+  width: 200px; /* Ancho de cada elemento */
 }
 
 .image {
-  width: 100%;
-  height: auto;
+  width: 100%; /* Ancho máximo de la imagen */
+  height: auto; /* Altura automática para mantener la proporción */
 }
 
 .info {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
   background: rgba(0, 0, 0, 0.7);
   color: white;
   padding: 10px;
   box-sizing: border-box;
+  width: 100%; /* Ancho máximo para ajustarse al contenedor */
 }
 
-.footer-image img {
-  width: 100%;
-  height: auto;
-  margin-bottom: 10px;
-}
-
-footer {
+.footer-content {
+  text-align: center; /* Centra el contenido del footer */
   background-color: #f8f8f8;
   padding: 20px;
-  text-align: center;
-  
-}
-
-.logo {
-  height: 90px;
-  width: auto;
-}
-
-.CestaCarrito {
-  height: 60px;
-  width: auto;
 }

@@ -1,13 +1,15 @@
-import React, { useState, useEffect } from "react"; 
-import { Link } from "react-router-dom"; 
-import "./Platos.css"; 
-import logo from "../img/Logo.png"; 
-import CestaCompra from "../img/CestaCompra.png"; 
-import FooterImage from "../2cabecerayfooter.jpg"; // Importa la imagen del footer
-import HeaderImage from "../2cabecerayfooter.jpg"; // Importa la imagen de la cabecera
+// Platos.js
+import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import TartaChoco from "../img/Postres/postre2.jpg";
+import BerenjenasRellenas from "../img/Entrantes/descarga.jpeg";
+import EnsaladillaImg from "../img/Entrantes/ensaladilla.jpeg";
+import CaldoImg from "../img/CaldosyPotajes/OIP.jpeg";
+import PatatasFritasImg from "../img/PatatasyArroces/portadaPtatas.jpg";
+import logo from "../img/Logo.png";
+import CestaCompra from "../img/CestaCompra.png";
 
-
-const Platos = () => {
+const Platos = ({ agregarAlCarrito }) => {
   const [platos, setPlatos] = useState([]);
 
   useEffect(() => {
@@ -18,7 +20,11 @@ const Platos = () => {
           throw new Error('Error en la solicitud');
         }
         const data = await response.json();
-        setPlatos(data);
+        if (Array.isArray(data.platos)) {
+          setPlatos(data.platos);
+        } else {
+          console.error("La respuesta no contiene un array de platos:", data);
+        }
       } catch (error) {
         console.error("Error al cargar los platos:", error);
       }
@@ -56,30 +62,42 @@ const Platos = () => {
             <button>Buscar</button>
           </div>
         </div>
-        <div className="header-image">
-          <img src={HeaderImage} alt="Header" />
-        </div>
       </header>
       <main>
         <div className="image-grid">
-          {platos.map((plato) => (
-            <div key={plato.id} className="image-item">
-              <Link to={`/InfPlato/${plato.id}`}>
-                <img src={`http://127.0.0.1:8000${plato.imagen}`} alt={plato.nombre} className="image" />
-              </Link>
-              <div className="info">
-                <h3>{plato.nombre}</h3>
-                <p>Precio: {plato.precio}</p>
-                <button>Añadir al Carrito</button>
+          {platos.length > 0 ? (
+            platos.map((plato) => (
+              <div key={plato.id} className="image-item">
+                <Link to={`/InfPlato/${plato.id}`}>
+                  {plato.nombre === "Tarta de 3 Chocolates" && (
+                    <img src={TartaChoco} alt={plato.nombre} className="image" />
+                  )}
+                  {plato.nombre === "Berenjenas Rellenas" && (
+                    <img src={BerenjenasRellenas} alt={plato.nombre} className="image" />
+                  )}
+                  {plato.nombre === "Ensaladilla" && (
+                    <img src={EnsaladillaImg} alt={plato.nombre} className="image" />
+                  )}
+                  {plato.nombre === "Caldo Gallego" && (
+                    <img src={CaldoImg} alt={plato.nombre} className="image" />
+                  )}
+                  {plato.nombre === "Patatas Fritas" && (
+                    <img src={PatatasFritasImg} alt={plato.nombre} className="image" />
+                  )}
+                </Link>
+                <div className="info">
+                  <h3>{plato.nombre}</h3>
+                  <p>Precio: {plato.precio} €</p>
+                  <button onClick={() => agregarAlCarrito(plato)}>Añadir al Carrito</button>
+                </div>
               </div>
-            </div>
-          ))}
+            ))
+          ) : (
+            <p>No se encontraron platos.</p>
+          )}
         </div>
       </main>
       <footer>
-        <div className="footer-image">
-          <img src={FooterImage} alt="Footer" />
-        </div>
         <p>&copy; 2024 Call&Eat. Todos los derechos reservados.</p>
       </footer>
     </div>

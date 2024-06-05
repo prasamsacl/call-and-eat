@@ -27,21 +27,17 @@ const PagPrincipal = () => {
     <div className="container">
       <header>
         <div className="header-top">
-          {/* Enlace al inicio con el logo */}
           <Link to="/">
             <img src={logo} alt="Logo" className="logo" /> 
           </Link>
-          {/* Enlace al inicio con el título */}
           <Link to="/">
             <div className="title">Call&Eat</div>
           </Link>
-          {/* Enlace al carrito de compras */}
           <Link to="/Carro">
             <img src={CestaCompra} alt="Cesta" className="CestaCarrito" />
           </Link>
         </div>
         <div className="header-bottom">
-          {/* Navegación principal */}
           <nav>
             <ul>
               <li><Link to="/">Inicio</Link></li>
@@ -51,7 +47,6 @@ const PagPrincipal = () => {
               <li><Link to="/Contacto">Contacto</Link></li>
             </ul>
           </nav>
-          {/* Barra de búsqueda */}
           <div className="search">
             <input type="text" placeholder="Buscar..." />
             <button>Buscar</button>
@@ -79,7 +74,6 @@ const PagPrincipal = () => {
           <h1>Bienvenido a Call&Eat</h1>
           <p>Descubre los mejores platos en nuestra carta y carta semanal</p>
           <p>¡Con Call&Eat, disfruta de la mejor comida sin salir de casa!</p>
-          <p>Texto sobre Call&Eat...</p> {/* Agrega tu texto aquí */}
         </div>
       </main>
       <footer>

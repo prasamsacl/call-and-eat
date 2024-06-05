@@ -8,25 +8,48 @@ import portadaPescado from "../img/Pescado/portadaPescado.jpg";
 import helados from "../img/Postres/helados.jpg";
 import portadaBebidas from "../img/Bebidas/portadaBebidas.jpg";
 
-const CartaSemanal = () => {
+const CartaSemanal = ({ agregarAlCarrito }) => {
   const platos = [
-    { tipo: "Primer Plato", nombre1: "Berenjenas a la Parmesana", nombre2: "Ensalada César", nombre3: "Sopa de Verduras", imagen: entrante5 },
-    { tipo: "Segundo Plato", nombre1: "Pollo Asado", nombre2: "Pescado al Horno", nombre3: "Lasaña de Carne", imagen: portadaPescado },
-    { tipo: "Postre", nombre1: "Tarta de Queso", nombre2: "Fruta Fresca", nombre3: "Helado", imagen: helados },
-    { tipo: "Bebidas", nombre1: "Agua", nombre2: "Vino Tinto", nombre3: "Refresco", imagen: portadaBebidas }
+    { tipo: "primerPlato", nombre: "Berenjenas a la Parmesana", imagen: entrante5 },
+    { tipo: "primerPlato", nombre: "Ensalada César", imagen: entrante5 },
+    { tipo: "primerPlato", nombre: "Sopa de Verduras", imagen: entrante5 },
+    { tipo: "segundoPlato", nombre: "Pollo Asado", imagen: portadaPescado },
+    { tipo: "segundoPlato", nombre: "Pescado al Horno", imagen: portadaPescado },
+    { tipo: "segundoPlato", nombre: "Lasaña de Carne", imagen: portadaPescado },
+    { tipo: "postre", nombre: "Tarta de Queso", imagen: helados },
+    { tipo: "postre", nombre: "Fruta Fresca", imagen: helados },
+    { tipo: "postre", nombre: "Helado", imagen: helados },
+    { tipo: "bebida", nombre: "Agua", imagen: portadaBebidas },
+    { tipo: "bebida", nombre: "Vino Tinto", imagen: portadaBebidas },
+    { tipo: "bebida", nombre: "Refresco", imagen: portadaBebidas }
   ];
 
-  const [seleccionados, setSeleccionados] = useState([]);
+  const [seleccionados, setSeleccionados] = useState({
+    primerPlato: null,
+    segundoPlato: null,
+    postre: null,
+    bebida: null
+  });
 
-  const manejarSeleccion = (plato) => {
-    setSeleccionados((prevSeleccionados) => {
-      if (prevSeleccionados.includes(plato)) {
-        return prevSeleccionados.filter((p) => p !== plato);
-      } else {
-        return [...prevSeleccionados, plato];
+  const manejarSeleccion = (tipo, nombre) => {
+    setSeleccionados((prevSeleccionados) => ({
+      ...prevSeleccionados,
+      [tipo]: nombre
+    }));
+  };
+
+  const manejarAgregarAlCarrito = () => {
+    let total = 0;
+    Object.values(seleccionados).forEach((plato) => {
+      if (plato) {
+        agregarAlCarrito({ nombre: plato, precio: 12 });
+        total += 12;
       }
     });
+    return total;
   };
+
+  const precioTotal = manejarAgregarAlCarrito();
 
   return (
     <div className="container">
@@ -63,30 +86,25 @@ const CartaSemanal = () => {
           {platos.map((plato, index) => (
             <div
               key={index}
-              className={`card ${seleccionados.includes(plato) ? "selected" : ""}`}
-              onClick={() => manejarSeleccion(plato)}
+              className={`card ${seleccionados[plato.tipo] === plato.nombre ? "selected" : ""}`}
+              onClick={() => manejarSeleccion(plato.tipo, plato.nombre)}
             >
-              <img src={plato.imagen} alt={plato.tipo} className="image" />
-              <div className="image-text">{plato.tipo}</div>
-              <div className="plato-descripcion">
-                <p><Link to={`/Plato/${plato.nombre1}`} className="plato-link">{plato.nombre1}</Link></p>
-                <p><Link to={`/Plato/${plato.nombre2}`} className="plato-link">{plato.nombre2}</Link></p>
-                <p><Link to={`/Plato/${plato.nombre3}`} className="plato-link">{plato.nombre3}</Link></p>
-              </div>
+              <img src={plato.imagen} alt={plato.nombre} className="image" />
+              <div className="image-text">{plato.nombre}</div>
             </div>
           ))}
         </div>
         <div className="selected-platos">
           <h3>Platos Seleccionados:</h3>
           <ul>
-            {seleccionados.map((plato, index) => (
-              <li key={index}>{plato.nombre1} / {plato.nombre2} / {plato.nombre3}</li>
-            ))}
+            {Object.entries(seleccionados).map(([tipo, nombre]) =>
+              nombre ? <li key={tipo}>{nombre}</li> : null
+            )}
           </ul>
         </div>
         <div className="total-price">
-          <p>Precio Total del Menú: <strong>12€</strong></p>
-          <Link to="/PagoFinal"><button>Hacer Pedido</button></Link>
+          <p>Precio Total del Menú: <strong>{precioTotal}€</strong></p>
+          <button onClick={manejarAgregarAlCarrito}>Añadir al Carrito</button>
         </div>
       </main>
       <footer>

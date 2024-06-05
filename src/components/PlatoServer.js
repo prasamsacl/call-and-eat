@@ -1,3 +1,5 @@
+import axios from 'axios';
+
 const API_BASE_URL = "http://127.0.0.1:8000/";
 
 // Función para obtener la carta semanal
@@ -41,13 +43,28 @@ export const getAllPlatos = async () => {
     const respuesta = await fetch(API_BASE_URL + "platos/");
     return respuesta.json();
 };
+
 // Función para obtener los detalles de un plato por su ID
 export const getPlatoPorId = async (platoId) => {
     const respuesta = await fetch(API_BASE_URL + `platos/${platoId}/`);
     return respuesta.json();
 };
 
-// Ejemplo de cómo usar la función para obtener un plato por su ID
-const platoId = 1; // ID del plato que deseas obtener
-const plato = await getPlatoPorId(platoId);
-console.log(plato);
+export const sendDatosPago = async (datosPago) => {
+    try {
+        const response = await axios.post('http://127.0.0.1:8000/pago_final/', datosPago, {
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        });
+        return response.data;
+    } catch (error) {
+        throw error;
+    }
+};
+
+document.addEventListener("DOMContentLoaded", async function() {
+    const platoId = 1; // ID del plato que deseas obtener
+    const plato = await getPlatoPorId(platoId);
+    console.log(plato);
+});
