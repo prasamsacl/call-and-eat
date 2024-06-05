@@ -50,10 +50,12 @@ Para el diseño y la maquetación del sitio web, estoy utilizando Bootstrap, que
 
 En resumen, Call&Eat es una plataforma web diseñada para mejorar la experiencia de entrega de alimentos a domicilio, utilizando tecnologías modernas tanto en el backend como en el frontend para garantizar una experiencia de usuario óptima. Con futuras mejoras planeadas, estamos comprometidos a seguir satisfaciendo las necesidades y preferencias de nuestros usuarios en un mercado en constante evolución.
 
-<li>Temporalización del proyecto y fases de desarrollo</li>
+
+<li><h4>Temporalización del proyecto y fases de desarrollo</h4></li>
 🏗️Proyecto en construcción 🏗️
 
-<li>Retos y Aprendizajes Significativos</li>
+
+<li><h4>Retos y Aprendizajes Significativos</h4></li>
 
 Durante el desarrollo del proyecto, nos enfrentamos a varios desafíos y aprendimos muchas lecciones importantes:
 Aprendizaje de nuevas tecnologías: La curva de aprendizaje para algunas tecnologías nuevas fue más empinada de lo esperado, especialmente al aprender a utilizar un nuevo framework o herramienta.
@@ -62,7 +64,7 @@ Gestión del tiempo: Mantener el proyecto en marcha dentro del plazo establecido
 Comunicación con el cliente: Asegurar una comunicación clara y efectiva con el cliente a lo largo del proyecto fue fundamental para comprender y abordar adecuadamente sus necesidades y expectativas.
 
   
-<li>Recursos de hardware y software</li>
+<li><h4>Recursos de hardware y software</h4></li>
 <h2>Hardware</h2>
 HP Pavilion x360 convertible 14-dy1xxx, utilizo el siguiente hardware:
 Procesador: Intel Core i5 de 11ª generación o superior
@@ -71,7 +73,7 @@ Tarjeta Gráfica: Gráficos integrados Intel Iris Xe
 Espacio en Disco Duro: SSD de 256 GB o 512 GB
 Conectividad: Wi-Fi 6, Bluetooth 5.0, puertos USB tipo A y C, HDMI
 
-<h2>Software</h2>
+<h2><h4>Software</h4></h2>
 Sistema Operativo:
 Windows 10 Home o Pro (actualizable a Windows 11)
 Entornos de Desarrollo Integrado (IDE):
@@ -90,11 +92,11 @@ Navegador Web:
 Google Chrome (versión 90 o superior)
 Mozilla Firefox (versión 88 o superior)
 
-<li>Arquitectura software y de sistemas</li>
+<li><h4>Arquitectura software y de sistemas</h4></li>
   Actores humanos: Clientes de Call&Eat. 
 Comunicación entre elementos: Los clientes interactúan con la aplicación a través de una interfaz de usuario web o móvil. Las solicitudes de los clientes se envían al servidor de la aplicación Call&Eat a través de Internet. El servidor procesa estas solicitudes, accede a la base de datos para recuperar la información necesaria, como los detalles de los platos y los menús, y genera respuestas apropiadas que se envían de vuelta al cliente. Se sigue una arquitectura cliente-servidor, donde el cliente puede ser un navegador web en una computadora de escritorio o un dispositivo móvil, y el servidor es la aplicación web alojada en un servidor remoto que gestiona todas las operaciones y lógica de negocio de Call&Eat.
 
-<li>Descripción de datos</li>
+<li><h4>Descripción de datos</h4></li>
 Call&Eat es una plataforma que ofrece una experiencia completa de pedido de comida, comenzando con una página principal que presenta imágenes atractivas y una descripción del servicio. La sección de la carta muestra una variedad de platos organizados por categorías, mientras que la carta semanal ofrece menús fijos para cada día de la semana, incluyendo primer plato, segundo plato y postre, todo a un precio fijo. Los usuarios pueden explorar una galería de imágenes para ver los platos destacados o el ambiente del local. La sección de contacto proporciona información detallada del local, como dirección y número de teléfono. La cesta de la compra permite a los usuarios seleccionar platos y gestionar su pedido, mientras que el proceso de pago finaliza la transacción, generando un recibo del pedido con detalles de los platos seleccionados y el total a pagar.
 
 
