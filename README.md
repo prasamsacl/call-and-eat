@@ -104,5 +104,27 @@ Call&Eat es una plataforma que ofrece una experiencia completa de pedido de comi
 Prasamsa Castelao López
 
 <li><h4>LICENCIA</h4></li>
+<section id="insignias">
+        <div class="badge-container">
+            <a href="https://github.com/prettier/prettier">
+                      <a href="#">
+                <img src="https://img.shields.io/badge/STATUS-EN%20DESAROLLO-green" alt="Status">
+            </a>
+                <img src="https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square" alt="code style: prettier">
+            </a>
+            <a href="https://github.com/tu-usuario/tu-repo/actions">
+                <img src="https://img.shields.io/badge/build-passing-brightgreen" alt="Build Status">
+            </a>
+            <a href="https://github.com/tu-usuario/tu-repo/blob/main/LICENSE">
+                <img src="https://img.shields.io/badge/license-MIT-green" alt="License">
+            </a>
+            <a href="https://github.com/tu-usuario/tu-repo">
+                <img src="https://img.shields.io/badge/version-1.0.0-blue" alt="Version">
+            </a>
+            <a href="https://github.com/tu-usuario/tu-repo">
+                <img src="https://img.shields.io/badge/coverage-80%25-yellow" alt="Code Coverage">
+            </a>
+        </div>
+    </section>
 </ol>
 
