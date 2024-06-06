@@ -11,6 +11,11 @@
   padding: 10px 20px;
 }
 
+.contact-info a img {
+  width: 30px; /* Ajusta el tamaño de las imágenes según tu preferencia */
+  margin-right: 10px; /* Agrega espacio a la derecha de cada imagen */
+}
+
 .header-bottom nav ul {
   list-style: none;
   display: flex;

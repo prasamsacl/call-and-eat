@@ -8,9 +8,11 @@ import CaldoImg from "../img/CaldosyPotajes/OIP.jpeg";
 import PatatasFritasImg from "../img/PatatasyArroces/portadaPtatas.jpg";
 import logo from "../img/Logo.png";
 import CestaCompra from "../img/CestaCompra.png";
+import ModalPlato from "./ModelPlato";
 
 const Platos = ({ agregarAlCarrito }) => {
   const [platos, setPlatos] = useState([]);
+  const [platoSeleccionado, setPlatoSeleccionado] = useState(null); // Estado para el plato seleccionado
 
   useEffect(() => {
     const cargarPlatos = async () => {
@@ -68,7 +70,7 @@ const Platos = ({ agregarAlCarrito }) => {
           {platos.length > 0 ? (
             platos.map((plato) => (
               <div key={plato.id} className="image-item">
-                <Link to={`/InfPlato/${plato.id}`}>
+                <div onClick={() => setPlatoSeleccionado(plato)}> {/* Agrega onClick para mostrar el modal */}
                   {plato.nombre === "Tarta de 3 Chocolates" && (
                     <img src={TartaChoco} alt={plato.nombre} className="image" />
                   )}
@@ -84,7 +86,7 @@ const Platos = ({ agregarAlCarrito }) => {
                   {plato.nombre === "Patatas Fritas" && (
                     <img src={PatatasFritasImg} alt={plato.nombre} className="image" />
                   )}
-                </Link>
+                </div>
                 <div className="info">
                   <h3>{plato.nombre}</h3>
                   <p>Precio: {plato.precio} €</p>
@@ -100,6 +102,10 @@ const Platos = ({ agregarAlCarrito }) => {
       <footer>
         <p>&copy; 2024 Call&Eat. Todos los derechos reservados.</p>
       </footer>
+      {/* Modal para mostrar descripción y alérgenos del plato */}
+      {platoSeleccionado && (
+        <ModalPlato plato={platoSeleccionado} onClose={() => setPlatoSeleccionado(null)} />
+      )}
     </div>
   );
 };

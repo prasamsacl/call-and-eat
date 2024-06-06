@@ -107,7 +107,7 @@ const PagoFinal = () => {
             </div>
             <footer>
                 <div className="footer-bottom">
-                    &copy; 2023 Call&Eat | Diseñado por TuNombre
+                © 2024 Call&Eat. Todos los derechos reservados.
                 </div>
             </footer>
         </div>

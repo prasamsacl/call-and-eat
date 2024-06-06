@@ -25,34 +25,47 @@ const CartaSemanal = ({ agregarAlCarrito }) => {
   ];
 
   const [seleccionados, setSeleccionados] = useState({
-    primerPlato: null,
-    segundoPlato: null,
-    postre: null,
-    bebida: null
+    primerPlato: [],
+    segundoPlato: [],
+    postre: [],
+    bebida: []
   });
 
   const manejarSeleccion = (tipo, nombre) => {
     setSeleccionados((prevSeleccionados) => ({
       ...prevSeleccionados,
-      [tipo]: nombre
+      [tipo]: prevSeleccionados[tipo].includes(nombre)
+        ? prevSeleccionados[tipo].filter((item) => item !== nombre)
+        : [...prevSeleccionados[tipo], nombre]
     }));
   };
 
   const manejarAgregarAlCarrito = () => {
-    let total = 0;
-    Object.values(seleccionados).forEach((plato) => {
-      if (plato) {
+    Object.values(seleccionados).forEach((platos) => {
+      platos.forEach((plato) => {
         agregarAlCarrito({ nombre: plato, precio: 12 });
-        total += 12;
-      }
+      });
     });
-    return total;
   };
 
-  const precioTotal = manejarAgregarAlCarrito();
+  const renderPlatosPorTipo = (tipo) => {
+    return platos
+      .filter((plato) => plato.tipo === tipo)
+      .map((plato, index) => (
+        <div
+          key={index}
+          className={`card ${seleccionados[plato.tipo].includes(plato.nombre) ? "selected" : ""}`}
+          onClick={() => manejarSeleccion(plato.tipo, plato.nombre)}
+        >
+          <img src={plato.imagen} alt={plato.nombre} className="image" />
+          <div className="image-text">{plato.nombre}</div>
+        </div>
+      ));
+  };
 
   return (
     <div className="container">
+      {/* Encabezado */}
       <header>
         <div className="header-top">
           <Link to="/">
@@ -81,32 +94,48 @@ const CartaSemanal = ({ agregarAlCarrito }) => {
           </div>
         </div>
       </header>
+      {/* Contenido principal */}
       <main className="weekly-menu">
-        <div className="image-grid">
-          {platos.map((plato, index) => (
-            <div
-              key={index}
-              className={`card ${seleccionados[plato.tipo] === plato.nombre ? "selected" : ""}`}
-              onClick={() => manejarSeleccion(plato.tipo, plato.nombre)}
-            >
-              <img src={plato.imagen} alt={plato.nombre} className="image" />
-              <div className="image-text">{plato.nombre}</div>
-            </div>
-          ))}
+        <div className="plato-category">
+          <h2>Primer Plato</h2>
+          <div className="image-grid">
+            {renderPlatosPorTipo("primerPlato")}
+          </div>
+        </div>
+        <div className="plato-category">
+          <h2>Segundo Plato</h2>
+          <div className="image-grid">
+            {renderPlatosPorTipo("segundoPlato")}
+          </div>
+        </div>
+        <div className="plato-category">
+          <h2>Postres</h2>
+          <div className="image-grid">
+            {renderPlatosPorTipo("postre")}
+          </div>
+        </div>
+        <div className="plato-category">
+          <h2>Bebidas</h2>
+          <div className="image-grid">
+            {renderPlatosPorTipo("bebida")}
+          </div>
         </div>
         <div className="selected-platos">
           <h3>Platos Seleccionados:</h3>
           <ul>
-            {Object.entries(seleccionados).map(([tipo, nombre]) =>
-              nombre ? <li key={tipo}>{nombre}</li> : null
+            {Object.entries(seleccionados).map(([tipo, platos]) =>
+              platos.map((plato, index) => (
+                <li key={index}>{plato}</li>
+              ))
             )}
           </ul>
         </div>
         <div className="total-price">
-          <p>Precio Total del Menú: <strong>{precioTotal}€</strong></p>
+          <p>Precio Total del Menú: <strong>12€</strong></p>
           <button onClick={manejarAgregarAlCarrito}>Añadir al Carrito</button>
         </div>
       </main>
+      {/* Pie de página */}
       <footer>
         <p>&copy; 2024 Call&Eat. Todos los derechos reservados.</p>
       </footer>
