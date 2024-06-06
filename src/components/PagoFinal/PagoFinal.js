@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import axios from 'axios'; // Importa Axios
+import axios from 'axios';
 import "./PagoFinal.css"; 
 import logo from "../img/Logo.png"; 
 import CestaCompra from "../img/CestaCompra.png"; 
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 const PagoFinal = () => {
     const [datosPago, setDatosPago] = useState({
@@ -12,7 +14,7 @@ const PagoFinal = () => {
         telefono: "",
         tarjeta: "",
         cv: "",
-        fecha: "",
+        fecha: new Date(),
         direccion: "",
         cp: "",
     });
@@ -27,22 +29,53 @@ const PagoFinal = () => {
         });
     };
 
+    const handleFechaChange = (date) => {
+        setDatosPago({
+            ...datosPago,
+            fecha: date,
+        });
+    };
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         const confirmar = window.confirm("¿Desea realizar la compra?");
         if (confirmar) {
             try {
-                const response = await axios.post('http://127.0.0.1:8000/pago_final/', datosPago); // Usar Axios para enviar datos
+                const csrfToken = getCSRFToken();
+                const response = await axios.post(
+                    'http://127.0.0.1:8000/pago_final/',
+                    datosPago,
+                    {
+                        headers: {
+                            'X-CSRFToken': csrfToken,
+                        },
+                    }
+                );
                 console.log("Datos de pago enviados:", datosPago);
                 alert("Compra realizada con éxito");
                 navigate("/");
             } catch (error) {
                 console.error("Hubo un error al enviar los datos de pago:", error);
+                if (error.response) {
+                    console.log("Respuesta del servidor:", error.response.data);
+                }
                 alert("Hubo un error al realizar la compra. Inténtelo nuevamente.");
             }
         } else {
             navigate("/Carro");
         }
+    };
+
+    const getCSRFToken = () => {
+        let token = null;
+        const cookies = document.cookie.split(';');
+        cookies.forEach(cookie => {
+            const [name, value] = cookie.trim().split('=');
+            if (name === 'csrftoken') {
+                token = value;
+            }
+        });
+        return token;
     };
 
     return (
@@ -78,6 +111,9 @@ const PagoFinal = () => {
             <div className="formulario">
                 <h2>Información de Pago</h2>
                 <form onSubmit={handleSubmit}>
+                    {/* Agregar token CSRF como un campo oculto */}
+                    <input type="hidden" name="csrfmiddlewaretoken" value={getCSRFToken()} />
+                    
                     <label htmlFor="nombre">Nombre:</label>
                     <input type="text" id="nombre" name="nombre" value={datosPago.nombre} onChange={handleChange} required />
                     
@@ -94,8 +130,8 @@ const PagoFinal = () => {
                     <input type="text" id="cv" name="cv" value={datosPago.cv} onChange={handleChange} required />
                     
                     <label htmlFor="fecha">Fecha de Caducidad:</label>
-                    <input type="text" id="fecha" name="fecha" value={datosPago.fecha} onChange={handleChange} required />
-                    
+                    <DatePicker id="fecha" selected={datosPago.fecha} onChange={handleFechaChange} dateFormat="MM/yyyy" showMonthYearPicker />
+
                     <label htmlFor="direccion">Dirección:</label>
                     <input type="text" id="direccion" name="direccion" value={datosPago.direccion} onChange={handleChange} required />
                     
@@ -115,3 +151,5 @@ const PagoFinal = () => {
 };
 
 export default PagoFinal;
+
+
