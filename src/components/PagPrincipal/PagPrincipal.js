@@ -4,12 +4,12 @@ import { Link } from "react-router-dom";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import pagPrincipal from "../img/pagPrincipal.jpg"; 
+import pagPrincipal from "../img/images.jpeg"; 
 import logo from "../img/Logo.png"; 
 import CestaCompra from "../img/CestaCompra.png"; 
-import portadadePostres from "../img/portadadePostres.jpg"; 
+import portadadePostres from "../img/ensalada cesar.jpeg"; 
 import agua from "../img/Bebidas/agua.jpg"; 
-import pastas3 from "../img/Pastas/pastas3.jpg"; 
+import pastas3 from "../img/Pastas/pastas4.jpg"; 
 
 // Definimos el componente PagPrincipal
 const PagPrincipal = () => {

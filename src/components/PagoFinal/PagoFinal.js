@@ -17,6 +17,7 @@ const PagoFinal = () => {
         fecha: new Date(),
         direccion: "",
         cp: "",
+        csrfmiddlewaretoken: "" // Agregar un campo para el token CSRF
     });
 
     const navigate = useNavigate();
@@ -41,15 +42,11 @@ const PagoFinal = () => {
         const confirmar = window.confirm("¿Desea realizar la compra?");
         if (confirmar) {
             try {
-                const csrfToken = getCSRFToken();
-                const response = await axios.post(
+                // Enviar el token CSRF como parte de los datos del formulario
+                await axios.post(
                     'http://127.0.0.1:8000/pago_final/',
-                    datosPago,
-                    {
-                        headers: {
-                            'X-CSRFToken': csrfToken,
-                        },
-                    }
+                    datosPago
+                
                 );
                 console.log("Datos de pago enviados:", datosPago);
                 alert("Compra realizada con éxito");
@@ -64,18 +61,6 @@ const PagoFinal = () => {
         } else {
             navigate("/Carro");
         }
-    };
-
-    const getCSRFToken = () => {
-        let token = null;
-        const cookies = document.cookie.split(';');
-        cookies.forEach(cookie => {
-            const [name, value] = cookie.trim().split('=');
-            if (name === 'csrftoken') {
-                token = value;
-            }
-        });
-        return token;
     };
 
     return (
@@ -112,7 +97,7 @@ const PagoFinal = () => {
                 <h2>Información de Pago</h2>
                 <form onSubmit={handleSubmit}>
                     {/* Agregar token CSRF como un campo oculto */}
-                    <input type="hidden" name="csrfmiddlewaretoken" value={getCSRFToken()} />
+                    <input type="hidden" name="csrfmiddlewaretoken" value={datosPago.csrfmiddlewaretoken} />
                     
                     <label htmlFor="nombre">Nombre:</label>
                     <input type="text" id="nombre" name="nombre" value={datosPago.nombre} onChange={handleChange} required />
@@ -151,5 +136,3 @@ const PagoFinal = () => {
 };
 
 export default PagoFinal;
-
-
