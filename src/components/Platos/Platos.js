@@ -1,4 +1,3 @@
-// Platos.js
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import TartaChoco from "../img/Postres/postre2.jpg";
@@ -8,11 +7,12 @@ import CaldoImg from "../img/CaldosyPotajes/OIP.jpeg";
 import PatatasFritasImg from "../img/PatatasyArroces/portadaPtatas.jpg";
 import logo from "../img/Logo.png";
 import CestaCompra from "../img/CestaCompra.png";
-import ModalPlato from "./ModelPlato";
+import Alergeno1 from "../img/alergenos/simbolo-alergeno-altramuz.png";
+import Alergeno2 from "../img/alergenos/simbolo-alergeno-lacteos.png";
+import Alergeno3 from "../img/alergenos/simbolo-alergeno-soja.png";
 
 const Platos = ({ agregarAlCarrito }) => {
   const [platos, setPlatos] = useState([]);
-  const [platoSeleccionado, setPlatoSeleccionado] = useState(null); // Estado para el plato seleccionado
 
   useEffect(() => {
     const cargarPlatos = async () => {
@@ -66,31 +66,37 @@ const Platos = ({ agregarAlCarrito }) => {
         </div>
       </header>
       <main>
-        <div className="image-grid">
+        <div className="platos-grid">
           {platos.length > 0 ? (
             platos.map((plato) => (
-              <div key={plato.id} className="image-item">
-                <div onClick={() => setPlatoSeleccionado(plato)}> {/* Agrega onClick para mostrar el modal */}
+              <div key={plato.id} className="plato-card">
+                <div className="plato-img">
                   {plato.nombre === "Tarta de 3 Chocolates" && (
-                    <img src={TartaChoco} alt={plato.nombre} className="image" />
+                    <img src={TartaChoco} alt={plato.nombre} />
                   )}
                   {plato.nombre === "Berenjenas Rellenas" && (
-                    <img src={BerenjenasRellenas} alt={plato.nombre} className="image" />
+                    <img src={BerenjenasRellenas} alt={plato.nombre} />
                   )}
                   {plato.nombre === "Ensaladilla" && (
-                    <img src={EnsaladillaImg} alt={plato.nombre} className="image" />
+                    <img src={EnsaladillaImg} alt={plato.nombre} />
                   )}
                   {plato.nombre === "Caldo Gallego" && (
-                    <img src={CaldoImg} alt={plato.nombre} className="image" />
+                    <img src={CaldoImg} alt={plato.nombre} />
                   )}
                   {plato.nombre === "Patatas Fritas" && (
-                    <img src={PatatasFritasImg} alt={plato.nombre} className="image" />
+                    <img src={PatatasFritasImg} alt={plato.nombre} />
                   )}
                 </div>
-                <div className="info">
+                <div className="plato-info">
                   <h3>{plato.nombre}</h3>
-                  <p>Precio: {plato.precio} €</p>
-                  <button onClick={() => agregarAlCarrito(plato)}>Añadir al Carrito</button>
+                  <p className="precio">Precio: {plato.precio} €</p>
+                  <p className="descripcion">Descripción: {plato.descripcion}</p>
+                  <div className="alergenos" style={{ display: "flex", alignItems: "center" }}>
+                    <img src={Alergeno1} alt="Alergeno 1" style={{ width: "25px", height: "25px", marginRight: "5px" }} />
+                    <img src={Alergeno2} alt="Alergeno 2" style={{ width: "25px", height: "25px", marginRight: "5px" }} />
+                    <img src={Alergeno3} alt="Alergeno 3" style={{ width: "25px", height: "25px", marginRight: "5px" }} />
+                  </div>
+                  <button className="agregar" onClick={() => agregarAlCarrito(plato)}>Añadir al Carrito</button>
                 </div>
               </div>
             ))
@@ -102,12 +108,10 @@ const Platos = ({ agregarAlCarrito }) => {
       <footer>
         <p>&copy; 2024 Call&Eat. Todos los derechos reservados.</p>
       </footer>
-      {/* Modal para mostrar descripción y alérgenos del plato */}
-      {platoSeleccionado && (
-        <ModalPlato plato={platoSeleccionado} onClose={() => setPlatoSeleccionado(null)} />
-      )}
     </div>
   );
 };
 
 export default Platos;
+
+

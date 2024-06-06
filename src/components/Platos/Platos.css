@@ -17,8 +17,17 @@
   justify-content: space-between;
   align-items: center;
 }
-.info{
-  margin-top: 10px;
+
+/* Estilo para las imágenes de los alérgenos */
+.alergenos {
+  display: flex;
+  align-items: center;
+}
+
+.alergenos img {
+  width: 20px;
+  height: 20px;
+  margin-right: 5px;
 }
 
 .header-bottom {
@@ -54,38 +63,38 @@ nav ul li {
 
 /* Resto del CSS */
 
-.image-grid {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+.platos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 20px;
   padding: 20px;
-  margin-top: 40px; /* Margen superior para separarlo del contenido anterior */
 }
 
-.image-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center; /* Centra los elementos horizontalmente */
-  text-align: center; /* Centra el texto */
-  width: 200px; /* Ancho de cada elemento */
+.plato-card {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  overflow: hidden;
 }
 
-.image {
-  width: 100%; /* Ancho máximo de la imagen */
-  height: auto; /* Altura automática para mantener la proporción */
+.plato-img img {
+  width: 100%;
+  height: auto;
 }
 
-.info {
-  background: rgba(0, 0, 0, 0.7);
+.plato-info {
+  padding: 15px;
+}
+
+.agregar {
+  background-color: #007bff;
   color: white;
-  padding: 10px;
-  box-sizing: border-box;
-  width: 100%; /* Ancho máximo para ajustarse al contenedor */
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
-.footer-content {
-  text-align: center; /* Centra el contenido del footer */
-  background-color: #f8f8f8;
-  padding: 20px;
+.agregar:hover {
+  background-color: #0056b3;
 }
