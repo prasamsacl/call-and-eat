@@ -80,4 +80,4 @@ const Galeria = () => {
   );
 };
 
-export default Galeria; // Exportamos el componente para que pueda ser utilizado en otras partes de la aplicación
+export default Galeria; 

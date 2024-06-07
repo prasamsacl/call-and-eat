@@ -1,5 +1,3 @@
-// ModalPlato.js
-
 import React from "react";
 
 const ModalPlato = ({ plato, onClose }) => {

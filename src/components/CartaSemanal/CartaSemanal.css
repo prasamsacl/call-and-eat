@@ -6,8 +6,8 @@
 }
 
 .card {
-  background: #ffffff; /* Fondo principal */
-  border: 1px solid #cccccc; /* Gris claro */
+  background: #ffffff; 
+  border: 1px solid #cccccc; 
   border-radius: 4px;
   overflow: hidden;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -38,17 +38,17 @@
 }
 
 .plato-link {
-  color: #333333; /* Gris oscuro */
+  color: #333333; 
   text-decoration: none;
   cursor: pointer;
 }
 
 .plato-link:hover {
-  background-color: #cccccc; /* Gris claro */
+  background-color: #cccccc; 
 }
-/* Estilos CSS para el botón "Añadir al Carrito" */
+/*botón "Añadir al Carrito" */
 .addToCartButton {
-  background-color: #4CAF50; /* Verde */
+  background-color: #4CAF50; 
   color: white;
   padding: 10px 20px;
   border: none;
@@ -58,7 +58,7 @@
 }
 
 .addToCartButton:hover {
-  background-color: #45A049; /* Verde más oscuro */
+  background-color: #45A049; 
 }
 .total-price button {
   background-color: #4caf50;

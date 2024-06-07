@@ -86,4 +86,4 @@ const Carta = () => {
   );
 };
 
-export default Carta; // Exportamos el componente para que pueda ser utilizado en otras partes de la aplicación
+export default Carta; 

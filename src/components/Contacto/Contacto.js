@@ -8,14 +8,19 @@ import Instagram from "../img/instagram.png";
 import Twitter from "../img/gorjeo.png"; 
 
 const Contacto = () => {
+  // Información de contacto
   const direccion = "Calle Ejemplo, 123";
   const codigoPostal = "12345";
   const telefono = "123-456-7890";
+
+  // Redes sociales del restaurante
   const redesSociales = [
     { nombre: "Facebook", url: "https://www.facebook.com", img: Facebook },
     { nombre: "Instagram", url: "https://www.instagram.com", img: Instagram },
     { nombre: "Twitter", url: "https://www.twitter.com", img: Twitter }
   ];
+
+  // Horario de apertura del restaurante
   const horario = {
     Lunes: ["10:00 - 16:30", "19:30 - 23:30"],
     Martes: ["10:00 - 16:30", "19:30 - 23:30"],
@@ -28,19 +33,23 @@ const Contacto = () => {
 
   return (
     <div className="containerContacto">
+      {/* Encabezado */}
       <header>
         <div className="header-top">
+          {/* Logo y enlace al inicio */}
           <Link to="/">
             <img src={logo} alt="Logo" className="logo" />
           </Link>
           <Link to="/">
             <div className="title">Call&Eat</div>
           </Link>
+          {/* Enlace al carrito de compras */}
           <Link to="/Carro">
             <img src={CestaCompra} alt="Cesta" className="CestaCarrito" />
           </Link>
         </div>
         <div className="header-bottom">
+          {/* Menú de navegación */}
           <nav>
             <ul>
               <li><Link to="/">Inicio</Link></li>
@@ -50,13 +59,16 @@ const Contacto = () => {
               <li><Link to="/Contacto">Contacto</Link></li>
             </ul>
           </nav>
+          {/* Barra de búsqueda */}
           <div className="search">
             <input type="text" placeholder="Buscar..." />
             <button>Buscar</button>
           </div>
         </div>
       </header>
+      {/* Contenido principal */}
       <main className="contact-main">
+        {/* Mapa de ubicación */}
         <div className="map-container">
           <iframe
             title="Mapa"
@@ -68,6 +80,7 @@ const Contacto = () => {
             loading="lazy"
           ></iframe>
         </div>
+        {/* Información de contacto */}
         <div className="contact-info">
           <h2>Contacto</h2>
           <p><strong>Dirección:</strong> {direccion}</p>
@@ -75,6 +88,7 @@ const Contacto = () => {
           <p><strong>Teléfono:</strong> {telefono}</p>
           <p><strong>Redes Sociales:</strong></p>
           <div className="redes-sociales">
+            {/* Renderizado de íconos de redes sociales */}
             {redesSociales.map((redSocial, index) => (
               <a key={index} href={redSocial.url} target="_blank" rel="noopener noreferrer">
                 <img src={redSocial.img} alt={redSocial.nombre} className="icono-red-social" />
@@ -83,6 +97,7 @@ const Contacto = () => {
           </div>
           <p><strong>Horario:</strong></p>
           <ul>
+            {/* Renderizado del horario */}
             {Object.entries(horario).map(([dia, horarios], index) => (
               <li key={index}>
                 <strong>{dia}:</strong> {horarios.join(", ")}
@@ -91,6 +106,7 @@ const Contacto = () => {
           </ul>
         </div>
       </main>
+      {/* Pie de página */}
       <footer>
         <p>&copy; 2024 Call&Eat. Todos los derechos reservados.</p>
       </footer>

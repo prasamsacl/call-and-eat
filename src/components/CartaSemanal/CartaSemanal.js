@@ -17,6 +17,7 @@ import agua from "../img/Bebidas/agua.jpg";
 import vinos from "../img/Bebidas/vinos.jpg";
 
 const CartaSemanal = ({ agregarAlCarrito }) => {
+  // Definición de los platos semanales con su tipo, nombre e imagen
   const platos = [
     { tipo: "primerPlato", nombre: "Berenjenas a la Parmesana", imagen: descarga },
     { tipo: "primerPlato", nombre: "Ensalada César", imagen: ensaladaCesar },
@@ -33,7 +34,7 @@ const CartaSemanal = ({ agregarAlCarrito }) => {
     { tipo: "bebida", nombre: "Vinos", imagen: vinos},
     { tipo: "bebida", nombre: "Cervezas", imagen: cervezas}
   ];
-
+  //Estado local para los platos seleccionados
   const [seleccionados, setSeleccionados] = useState({
     primerPlato: [],
     segundoPlato: [],
@@ -41,6 +42,7 @@ const CartaSemanal = ({ agregarAlCarrito }) => {
     bebida: []
   });
 
+// Función para manejar la selección de platos
   const manejarSeleccion = (tipo, nombre) => {
     setSeleccionados((prevSeleccionados) => ({
       ...prevSeleccionados,
@@ -49,7 +51,7 @@ const CartaSemanal = ({ agregarAlCarrito }) => {
         : [...prevSeleccionados[tipo], nombre]
     }));
   };
-
+ // Función para manejar el evento de agregar al carrito
   const manejarAgregarAlCarrito = () => {
     Object.values(seleccionados).forEach((platos) => {
       platos.forEach((plato) => {
@@ -58,6 +60,7 @@ const CartaSemanal = ({ agregarAlCarrito }) => {
     });
   };
 
+  // Función para renderizar los platos por tipo
   const renderPlatosPorTipo = (tipo) => {
     return platos
       .filter((plato) => plato.tipo === tipo)
@@ -134,6 +137,7 @@ const CartaSemanal = ({ agregarAlCarrito }) => {
         <div className="selected-platos">
           <h3>Platos Seleccionados:</h3>
           <ul>
+               {/* Renderizado de platos seleccionados */}
             {Object.entries(seleccionados).map(([tipo, platos]) =>
               platos.map((plato, index) => (
                 <li key={index}>{plato}</li>
@@ -141,6 +145,7 @@ const CartaSemanal = ({ agregarAlCarrito }) => {
             )}
           </ul>
         </div>
+        {/*precio total*/}
         <div className="total-price">
           <p>Precio Total del Menú: <strong>12€</strong></p>
           <button onClick={manejarAgregarAlCarrito}>Añadir al Carrito</button>

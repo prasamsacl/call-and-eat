@@ -5,7 +5,6 @@
   background-color: #ffffff;
 }
 
-/* Estilos para el header */
 
 .header-top, .header-bottom {
   background-color: #f8f8f8;
@@ -61,7 +60,6 @@ nav ul li {
   padding: 5px;
 }
 
-/* Resto del CSS */
 
 .platos-grid {
   display: grid;

@@ -6,39 +6,43 @@ import "./Carro.css";
 
 const Carro = ({ carrito }) => {
   // Estado local para el carrito
-  const [carritoLocal, setCarritoLocal] = useState([]);
-  const [contador, setContador] = useState(0);
+  const [carritoLocal, setCarritoLocal] = useState([]); // Estado local para el carrito
+  const [contador, setContador] = useState(0); // Estado para el contador de elementos en el carrito
 
   useEffect(() => {
-    // debemos de asegurarnis de que cada artículo tiene una propiedad `cantidad` inicializada
-    const carritoInicializado = carrito.map((item) => ({
-      ...item,
-      cantidad: item.cantidad || 1
-    }));
-    setCarritoLocal(carritoInicializado);
-    actualizarContador(carritoInicializado);
-  }, [carrito]);
+    // Función para inicializar el carrito local y el contador al cargar el componente o cuando cambie el carrito
+    const inicializarCarrito = () => {
+      // Asegurarse de que cada artículo tiene una propiedad `cantidad` inicializada
+      const carritoInicializado = carrito.map((item) => ({
+        ...item,
+        cantidad: item.cantidad || 1
+      }));
+      setCarritoLocal(carritoInicializado); // Actualizar el estado local del carrito
+      actualizarContador(carritoInicializado); // Actualizar el contador de elementos en el carrito
+    };
+    inicializarCarrito(); // Llamar a la función de inicialización del carrito
+  }, [carrito]); // Dependencia del efecto: carrito
 
   // Función para actualizar el contador de elementos en el carrito
   const actualizarContador = (carrito) => {
     const totalCantidad = carrito.reduce((total, item) => total + item.cantidad, 0);
-    setContador(totalCantidad);
+    setContador(totalCantidad); // Actualizar el contador
   };
 
   // Función para eliminar un plato del carrito
   const eliminarDelCarrito = (index) => {
     const nuevoCarrito = [...carritoLocal];
     nuevoCarrito.splice(index, 1);
-    setCarritoLocal(nuevoCarrito);
-    actualizarContador(nuevoCarrito);
+    setCarritoLocal(nuevoCarrito); // Actualizar el carrito
+    actualizarContador(nuevoCarrito); // Actualizar el contador
   };
 
   // Función para aumentar la cantidad de un plato
   const aumentarCantidad = (index) => {
     const nuevoCarrito = [...carritoLocal];
     nuevoCarrito[index].cantidad += 1;
-    setCarritoLocal(nuevoCarrito);
-    actualizarContador(nuevoCarrito);
+    setCarritoLocal(nuevoCarrito); // Actualizar el carrito
+    actualizarContador(nuevoCarrito); // Actualizar el contador
   };
 
   // Función para disminuir la cantidad de un plato
@@ -46,8 +50,8 @@ const Carro = ({ carrito }) => {
     const nuevoCarrito = [...carritoLocal];
     if (nuevoCarrito[index].cantidad > 1) {
       nuevoCarrito[index].cantidad -= 1;
-      setCarritoLocal(nuevoCarrito);
-      actualizarContador(nuevoCarrito);
+      setCarritoLocal(nuevoCarrito); // Actualizar el carrito
+      actualizarContador(nuevoCarrito); // Actualizar el contador
     }
   };
 
@@ -74,9 +78,9 @@ const Carro = ({ carrito }) => {
           <Link to="/">
             <div className="title">Call&Eat</div>
           </Link>
+          {/* El siguiente bloque de código renderiza el icono del carrito de la compra. */}
+          {/* Si el contador es mayor que cero, también muestra el número de elementos en el carrito. */}
           <Link to="/Carro">
-          {/* El siguiente bloque de código renderiza el icono del carrito de la compra.*/}
-           {/* Si el contador es mayor que cero, también muestra el número de elementos en el carrito.*/}
             <div className="icono-carrito">
               <img src={CestaCompra} alt="Cesta" className="CestaCarrito" />
               {contador > 0 && <span className="contador-carrito">{contador}</span>}
