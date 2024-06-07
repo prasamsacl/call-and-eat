@@ -9,8 +9,8 @@ import imagenEntrantes from "../img/Entrantes/imagenEntrantes.jpg";
 import ensaladilla from "../img/Entrantes/ensaladilla.jpeg";
 import caldos3 from "../img/CaldosyPotajes/caldos3.jpg";
 import portadaPtatas from "../img/PatatasyArroces/portadaPtatas.jpg";
-import PortadaCarnes from "../img/Carnes/PortadaCarnes.jpg";
-import portadaPescado from "../img/Pescado/portadaPescado.jpg";
+import PortadaCarnes from "../img/Carnes/carne8.jpg";
+import portadaPescado from "../img/Pescado/pescado1mis.jpg";
 import portadaBebidas from "../img/Bebidas/portadaBebidas.jpg";
 import postre3 from "../img/Postres/postre3.jpg";
 
