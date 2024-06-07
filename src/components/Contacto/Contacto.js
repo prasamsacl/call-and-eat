@@ -28,7 +28,7 @@ const Contacto = () => {
     Jueves: ["10:00 - 16:30", "19:30 - 23:30"],
     Viernes: ["10:00 - 16:30", "19:30 - 23:30"],
     Sábado: ["10:00 - 16:30"],
-    Domingo: ["Cerrado"]
+    Domingo: ["10:00 - 16:30"]
   };
 
   return (
