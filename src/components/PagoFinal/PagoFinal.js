@@ -17,8 +17,11 @@ const PagoFinal = () => {
         fecha: new Date(),
         direccion: "",
         cp: "",
-        csrfmiddlewaretoken: "" // Agregar un campo para el token CSRF
+        csrfmiddlewaretoken: ""
     });
+
+    const [errores, setErrores] = useState({});
+    const [enviado, setEnviado] = useState(false);
 
     const navigate = useNavigate();
 
@@ -41,12 +44,22 @@ const PagoFinal = () => {
         e.preventDefault();
         const confirmar = window.confirm("¿Desea realizar la compra?");
         if (confirmar) {
+            const erroresFormulario = {};
+            Object.keys(datosPago).forEach((campo) => {
+                if (!datosPago[campo]) {
+                    erroresFormulario[campo] = "Este campo es obligatorio";
+                }
+            });
+            if (Object.keys(erroresFormulario).length > 0) {
+                setErrores(erroresFormulario);
+                return;
+            }
+            setErrores({});
+            setEnviado(true);
             try {
-                // Enviar el token CSRF como parte de los datos del formulario
                 await axios.post(
                     'http://127.0.0.1:8000/pago_final/',
                     datosPago
-                
                 );
                 console.log("Datos de pago enviados:", datosPago);
                 alert("Compra realizada con éxito");
@@ -58,8 +71,6 @@ const PagoFinal = () => {
                 }
                 alert("Hubo un error al realizar la compra. Inténtelo nuevamente.");
             }
-        } else {
-            navigate("/Carro");
         }
     };
 
@@ -96,32 +107,102 @@ const PagoFinal = () => {
             <div className="formulario">
                 <h2>Información de Pago</h2>
                 <form onSubmit={handleSubmit}>
-                    {/* Agregar token CSRF como un campo oculto */}
                     <input type="hidden" name="csrfmiddlewaretoken" value={datosPago.csrfmiddlewaretoken} />
                     
                     <label htmlFor="nombre">Nombre:</label>
-                    <input type="text" id="nombre" name="nombre" value={datosPago.nombre} onChange={handleChange} required />
+                    <input
+                        type="text"
+                        id="nombre"
+                        name="nombre"
+                        value={datosPago.nombre}
+                        onChange={handleChange}
+                        className={errores.nombre ? "error" : enviado ? "completado" : ""}
+                        required
+                    />
+                    {errores.nombre && <p className="error">{errores.nombre}</p>}
                     
                     <label htmlFor="apellidos">Apellidos:</label>
-                    <input type="text" id="apellidos" name="apellidos" value={datosPago.apellidos} onChange={handleChange} required />
+                    <input
+                        type="text"
+                        id="apellidos"
+                        name="apellidos"
+                        value={datosPago.apellidos}
+                        onChange={handleChange}
+                        className={errores.apellidos ? "error" : enviado ? "completado" : ""}
+                        required
+                    />
+                    {errores.apellidos && <p className="error">{errores.apellidos}</p>}
                     
                     <label htmlFor="telefono">Teléfono:</label>
-                    <input type="text" id="telefono" name="telefono" value={datosPago.telefono} onChange={handleChange} required />
-
+                    <input
+                        type="text"
+                        id="telefono"
+                        name="telefono"
+                        value={datosPago.telefono}
+                        onChange={handleChange}
+                        className={errores.telefono ? "error" : enviado ? "completado" : ""}
+                        required
+                    />
+                    {errores.telefono && <p className="error">{errores.telefono}</p>}
+                    
                     <label htmlFor="tarjeta">Tarjeta de Crédito:</label>
-                    <input type="text" id="tarjeta" name="tarjeta" value={datosPago.tarjeta} onChange={handleChange} required />
+                    <input
+                        type="text"
+                        id="tarjeta"
+                        name="tarjeta"
+                        value={datosPago.tarjeta}
+                        onChange={handleChange}
+                        className={errores.tarjeta ? "error" : enviado ? "completado" : ""}
+                        required
+                    />
+                    {errores.tarjeta && <p className="error">{errores.tarjeta}</p>}
                     
                     <label htmlFor="cv">CV:</label>
-                    <input type="text" id="cv" name="cv" value={datosPago.cv} onChange={handleChange} required />
+                    <input
+                        type="text"
+                        id="cv"
+                        name="cv"
+                        value={datosPago.cv}
+                        onChange={handleChange}
+                        className={errores.cv ? "error" : enviado ? "completado" : ""}
+                        required
+                    />
+                    {errores.cv && <p className="error">{errores.cv}</p>}
                     
                     <label htmlFor="fecha">Fecha de Caducidad:</label>
-                    <DatePicker id="fecha" selected={datosPago.fecha} onChange={handleFechaChange} dateFormat="MM/yyyy" showMonthYearPicker />
-
+                    <DatePicker
+                        id="fecha"
+                        selected={datosPago.fecha}
+                        onChange={handleFechaChange}
+                        dateFormat="MM/yyyy"
+                        showMonthYearPicker
+                        className={errores.fecha ? "error" : enviado ? "completado" : ""}
+                    />
+                    {errores.fecha && <p className="error">{errores.fecha}</p>}
+                    
                     <label htmlFor="direccion">Dirección:</label>
-                    <input type="text" id="direccion" name="direccion" value={datosPago.direccion} onChange={handleChange} required />
+                    <input
+                        type="text"
+                        id="direccion"
+                        name="direccion"
+                        value={datosPago.direccion}
+                        onChange={handleChange}
+                        className={errores.direccion ? "error" : enviado ? "completado" : ""}
+                        required
+                    />
+                    {errores.direccion && <p className="error">{errores.direccion}</p>}
                     
                     <label htmlFor="cp">Código Postal:</label>
-                    <input type="text" id="cp" name="cp" value={datosPago.cp} onChange={handleChange} required />
+                    <input
+                        type="text"
+                        id="cp"
+                        name="cp"
+                        value={datosPago.cp}
+                        onChange={handleChange}
+                        className={errores.cp ? "error" : enviado ? "completado" : ""}
+                        required
+                    />
+                    {errores.cp && <p className="error">{errores.cp}</p>}
                     
                     <button type="submit">Confirmar Pago</button>
                 </form>

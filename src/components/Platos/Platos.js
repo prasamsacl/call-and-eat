@@ -10,11 +10,15 @@ import CestaCompra from "../img/CestaCompra.png";
 import Alergeno1 from "../img/alergenos/simbolo-alergeno-altramuz.png";
 import Alergeno2 from "../img/alergenos/simbolo-alergeno-lacteos.png";
 import Alergeno3 from "../img/alergenos/simbolo-alergeno-soja.png";
+import "./Platos.css";
 
 const Platos = ({ agregarAlCarrito }) => {
   const [platos, setPlatos] = useState([]);
+  const [contador, setContador] = useState(0); // Estado para el contador de la cesta
+  const [mensajeModal, setMensajeModal] = useState(""); // Estado para el mensaje modal
 
   useEffect(() => {
+    // Función para cargar los platos desde la API al montar el componente
     const cargarPlatos = async () => {
       try {
         const response = await fetch("http://127.0.0.1:8000/platos/");
@@ -35,8 +39,19 @@ const Platos = ({ agregarAlCarrito }) => {
     cargarPlatos();
   }, []);
 
+  // Función para agregar un plato al carrito y mostrar el mensaje modal
+  const agregarYMostrarMensajeModal = (plato) => {
+    agregarAlCarrito(plato); // Agregar plato al carrito
+    setContador((prevContador) => prevContador + 1); // Incrementar el contador
+    setMensajeModal(`¡Se ha añadido ${plato.nombre} al carrito!`);
+    setTimeout(() => {
+      setMensajeModal("");
+    }, 3000);
+  };
+
   return (
     <div className="containerPlatos">
+      {/* Encabezado */}
       <header>
         <div className="header-top">
           <Link to="/">
@@ -45,8 +60,12 @@ const Platos = ({ agregarAlCarrito }) => {
           <Link to="/">
             <div className="title">Call&Eat</div>
           </Link>
+          {/* Enlace al carrito con el contador */}
           <Link to="/Carro">
-            <img src={CestaCompra} alt="Cesta" className="CestaCarrito" />
+            <div className="icono-carrito">
+              <img src={CestaCompra} alt="Cesta" className="CestaCarrito" />
+              {contador > 0 && <span className="contador-carrito">{contador}</span>}
+            </div>
           </Link>
         </div>
         <div className="header-bottom">
@@ -59,18 +78,22 @@ const Platos = ({ agregarAlCarrito }) => {
               <li><Link to="/Contacto">Contacto</Link></li>
             </ul>
           </nav>
+          {/* Barra de búsqueda */}
           <div className="search">
             <input type="text" placeholder="Buscar..." />
             <button>Buscar</button>
           </div>
         </div>
       </header>
+      {/* Contenido principal */}
       <main>
         <div className="platos-grid">
+          {/* Mapeo de los platos */}
           {platos.length > 0 ? (
             platos.map((plato) => (
               <div key={plato.id} className="plato-card">
                 <div className="plato-img">
+                  {/* Renderizado condicional de la imagen del plato */}
                   {plato.nombre === "Tarta de 3 Chocolates" && (
                     <img src={TartaChoco} alt={plato.nombre} />
                   )}
@@ -91,12 +114,14 @@ const Platos = ({ agregarAlCarrito }) => {
                   <h3>{plato.nombre}</h3>
                   <p className="precio">Precio: {plato.precio} €</p>
                   <p className="descripcion">Descripción: {plato.descripcion}</p>
-                  <div className="alergenos" style={{ display: "flex", alignItems: "center" }}>
-                    <img src={Alergeno1} alt="Alergeno 1" style={{ width: "25px", height: "25px", marginRight: "5px" }} />
-                    <img src={Alergeno2} alt="Alergeno 2" style={{ width: "25px", height: "25px", marginRight: "5px" }} />
-                    <img src={Alergeno3} alt="Alergeno 3" style={{ width: "25px", height: "25px", marginRight: "5px" }} />
+                  {/* Alergenos */}
+                  <div className="alergenos">
+                    <img src={Alergeno1} alt="Alergeno 1" />
+                    <img src={Alergeno2} alt="Alergeno 2" />
+                    <img src={Alergeno3} alt="Alergeno 3" />
                   </div>
-                  <button className="agregar" onClick={() => agregarAlCarrito(plato)}>Añadir al Carrito</button>
+                  {/* Botón para añadir al carrito con la función de actualización del contador */}
+                  <button className="agregar" onClick={() => agregarYMostrarMensajeModal(plato)}>Añadir al Carrito</button>
                 </div>
               </div>
             ))
@@ -105,6 +130,13 @@ const Platos = ({ agregarAlCarrito }) => {
           )}
         </div>
       </main>
+      {/* Mensaje emergente */}
+      {mensajeModal && (
+        <div className="mensaje-modal">
+          <p>{mensajeModal}</p>
+        </div>
+      )}
+      {/* Pie de página */}
       <footer>
         <p>&copy; 2024 Call&Eat. Todos los derechos reservados.</p>
       </footer>
@@ -113,5 +145,4 @@ const Platos = ({ agregarAlCarrito }) => {
 };
 
 export default Platos;
-
 

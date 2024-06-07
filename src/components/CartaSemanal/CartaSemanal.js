@@ -3,25 +3,35 @@ import { Link } from "react-router-dom";
 import "./CartaSemanal.css";
 import logo from "../img/Logo.png";
 import CestaCompra from "../img/CestaCompra.png";
-import entrante5 from "../img/Entrantes/entrante5.jpg";
-import portadaPescado from "../img/Pescado/portadaPescado.jpg";
+import ensaladaCesar from "../img/ensalada cesar.jpeg";
+import caldos1 from "../img/CaldosyPotajes/caldos1.jpg";
+import descarga from "../img/Entrantes/descarga.jpeg";
+import carne7 from "../img/Carnes/carne7.jpg";
+import mixPescado from "../img/Pescado/pescado1mis.jpg";
+import fideoschinos from "../img/Pastas/pastas1.jpg";
 import helados from "../img/Postres/helados.jpg";
-import portadaBebidas from "../img/Bebidas/portadaBebidas.jpg";
+import postre3 from "../img/Postres/postre3.jpg";
+import postre6 from "../img/Postres/postre6.jpg";
+import cervezas from "../img/Bebidas/cervezas.jpg";
+import agua from "../img/Bebidas/agua.jpg";
+import vinos from "../img/Bebidas/vinos.jpg";
 
 const CartaSemanal = ({ agregarAlCarrito }) => {
   const platos = [
-    { tipo: "primerPlato", nombre: "Berenjenas a la Parmesana", imagen: entrante5 },
-    { tipo: "primerPlato", nombre: "Ensalada César", imagen: entrante5 },
-    { tipo: "primerPlato", nombre: "Sopa de Verduras", imagen: entrante5 },
-    { tipo: "segundoPlato", nombre: "Pollo Asado", imagen: portadaPescado },
-    { tipo: "segundoPlato", nombre: "Pescado al Horno", imagen: portadaPescado },
-    { tipo: "segundoPlato", nombre: "Lasaña de Carne", imagen: portadaPescado },
-    { tipo: "postre", nombre: "Tarta de Queso", imagen: helados },
-    { tipo: "postre", nombre: "Fruta Fresca", imagen: helados },
-    { tipo: "postre", nombre: "Helado", imagen: helados },
-    { tipo: "bebida", nombre: "Agua", imagen: portadaBebidas },
-    { tipo: "bebida", nombre: "Vino Tinto", imagen: portadaBebidas },
-    { tipo: "bebida", nombre: "Refresco", imagen: portadaBebidas }
+    { tipo: "primerPlato", nombre: "Berenjenas a la Parmesana", imagen: descarga },
+    { tipo: "primerPlato", nombre: "Ensalada César", imagen: ensaladaCesar },
+    { tipo: "primerPlato", nombre: "Lentejas", imagen: caldos1 },
+
+    { tipo: "segundoPlato", nombre: "Pollo Asado", imagen: carne7 },
+    { tipo: "segundoPlato", nombre: "Mix de Pescado", imagen: mixPescado },
+    { tipo: "segundoPlato", nombre: "Fideos Chinos", imagen: fideoschinos },
+
+    { tipo: "postre", nombre: "Tarta de Queso", imagen: postre3 },
+    { tipo: "postre", nombre: "Red Velvet ", imagen: postre6 },
+    { tipo: "postre", nombre: "Helados", imagen: helados },
+    { tipo: "bebida", nombre: "Agua", imagen: agua },
+    { tipo: "bebida", nombre: "Vinos", imagen: vinos},
+    { tipo: "bebida", nombre: "Cervezas", imagen: cervezas}
   ];
 
   const [seleccionados, setSeleccionados] = useState({
@@ -43,7 +53,7 @@ const CartaSemanal = ({ agregarAlCarrito }) => {
   const manejarAgregarAlCarrito = () => {
     Object.values(seleccionados).forEach((platos) => {
       platos.forEach((plato) => {
-        agregarAlCarrito({ nombre: plato, precio: 12 });
+        agregarAlCarrito({ nombre: plato, cantidad: 1, precio: 12 });
       });
     });
   };
@@ -59,6 +69,7 @@ const CartaSemanal = ({ agregarAlCarrito }) => {
         >
           <img src={plato.imagen} alt={plato.nombre} className="image" />
           <div className="image-text">{plato.nombre}</div>
+          <div className="plato-count">{seleccionados[plato.tipo].includes(plato.nombre) ? "1" : ""}</div>
         </div>
       ));
   };

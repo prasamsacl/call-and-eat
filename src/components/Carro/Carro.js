@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import logo from "../img/Logo.png";
 import CestaCompra from "../img/CestaCompra.png";
-import "./Carro.css"; // Importa el archivo CSS
+import "./Carro.css"; 
 
 const Carro = ({ carrito }) => {
   // Estado local para el carrito
@@ -10,7 +10,7 @@ const Carro = ({ carrito }) => {
   const [contador, setContador] = useState(0);
 
   useEffect(() => {
-    // Asegúrate de que cada artículo tiene una propiedad `cantidad` inicializada
+    // debemos de asegurarnis de que cada artículo tiene una propiedad `cantidad` inicializada
     const carritoInicializado = carrito.map((item) => ({
       ...item,
       cantidad: item.cantidad || 1
@@ -53,11 +53,18 @@ const Carro = ({ carrito }) => {
 
   // Función para calcular el precio total del carrito
   const calcularPrecioTotal = () => {
-    return carritoLocal.reduce((total, plato) => total + plato.precio * plato.cantidad, 0);
+    // Si el carrito tiene solo un elemento y ese elemento es un menú semanal, devolvemos el precio fijo(12)
+    if (carritoLocal.length === 1 && carritoLocal[0].esMenuSemanal) {
+      return 12;
+    } else {
+      // Calculamos el precio total sumando los precios de cada artículo en cada de añadir por platos
+      return carritoLocal.reduce((total, plato) => total + plato.precio * plato.cantidad, 0);
+    }
   };
 
   return (
     <div className="containerCarro">
+
       {/* Encabezado */}
       <header>
         <div className="header-top">
@@ -68,6 +75,8 @@ const Carro = ({ carrito }) => {
             <div className="title">Call&Eat</div>
           </Link>
           <Link to="/Carro">
+          {/* El siguiente bloque de código renderiza el icono del carrito de la compra.*/}
+           {/* Si el contador es mayor que cero, también muestra el número de elementos en el carrito.*/}
             <div className="icono-carrito">
               <img src={CestaCompra} alt="Cesta" className="CestaCarrito" />
               {contador > 0 && <span className="contador-carrito">{contador}</span>}
@@ -96,18 +105,25 @@ const Carro = ({ carrito }) => {
         <div className="carrito">
           <h2>Carrito</h2>
           <ul>
-            {carritoLocal.map((plato, index) => (
-              <li key={index} className="carrito-item">
-                <span className="nombre-plato">{plato.nombre}</span>
-                <div className="cantidad">
-                  <button onClick={() => disminuirCantidad(index)}>-</button>
-                  <span>{plato.cantidad}</span>
-                  <button onClick={() => aumentarCantidad(index)}>+</button>
-                </div>
-                <span className="precio-plato">Precio: {(plato.precio * plato.cantidad).toFixed(2)} €</span>
-                <button onClick={() => eliminarDelCarrito(index)} className="btn-eliminar">Eliminar</button>
+            {carritoLocal.length === 1 && carritoLocal[0].esMenuSemanal ? (
+              <li className="carrito-item">
+                <span className="nombre-plato">Menú Semanal</span>
+                <span className="precio-plato">Precio: 12€</span>
               </li>
-            ))}
+            ) : (
+              carritoLocal.map((plato, index) => (
+                <li key={index} className="carrito-item">
+                  <span className="nombre-plato">{plato.nombre}</span>
+                  <div className="cantidad">
+                    <button onClick={() => disminuirCantidad(index)}>-</button>
+                    <span>{plato.cantidad}</span>
+                    <button onClick={() => aumentarCantidad(index)}>+</button>
+                  </div>
+                  <span className="precio-plato">Precio: {(plato.precio * plato.cantidad).toFixed(2)} €</span>
+                  <button onClick={() => eliminarDelCarrito(index)} className="btn-eliminar">Eliminar</button>
+                </li>
+              ))
+            )}
           </ul>
         </div>
         {/* Precio total del carrito */}

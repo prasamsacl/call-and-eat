@@ -10,9 +10,9 @@ const Carta = () => {
     require("../img/Entrantes/imagenEntrantes.jpg"),
     require("../img/CaldosyPotajes/caldos3.jpg"),
     require("../img/PatatasyArroces/portadaPtatas.jpg"),
-    require("../img/Carnes/PortadaCarnes.jpg"),
+    require("../img/Carnes/carne5.jpg"),
     require("../img/Pastas/pastas1.jpg"),
-    require("../img/Pescado/portadaPescado.jpg"),
+    require("../img/Pescado/pescado1mis.jpg"),
     require("../img/Postres/postre3.jpg"),
     require("../img/Bebidas/portadaBebidas.jpg"),
   ];
