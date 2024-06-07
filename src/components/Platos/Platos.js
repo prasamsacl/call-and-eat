@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import TartaChoco from "../img/Postres/postre2.jpg";
+import MiniTostas from "../img/Entrantes/entrante4.jpg";
 import BerenjenasRellenas from "../img/Entrantes/descarga.jpeg";
 import EnsaladillaImg from "../img/Entrantes/ensaladilla.jpeg";
 import CaldoImg from "../img/CaldosyPotajes/OIP.jpeg";
@@ -94,8 +94,8 @@ const Platos = ({ agregarAlCarrito }) => {
               <div key={plato.id} className="plato-card">
                 <div className="plato-img">
                   {/* Renderizado condicional de la imagen del plato */}
-                  {plato.nombre === "Tarta de 3 Chocolates" && (
-                    <img src={TartaChoco} alt={plato.nombre} />
+                  {plato.nombre === "Mix de Tostas" && (
+                    <img src={MiniTostas} alt={plato.nombre} />
                   )}
                   {plato.nombre === "Berenjenas Rellenas" && (
                     <img src={BerenjenasRellenas} alt={plato.nombre} />
